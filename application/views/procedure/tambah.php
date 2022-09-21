@@ -38,7 +38,7 @@
     <label for="project_id" class="col-sm-3 text-right">Pilih Project</label>
     <div class="col-sm-9">
    
-      <input type="text" name="project_id" class="form-control" value="<?php echo $pengaturan->project_name ?>"  readonly>
+      <input type="text" name="project_id" class="form-control" value="<?php echo $pengaturan->project_id ?> - <?php echo $pengaturan->project_name ?>"  readonly>
       
    
     </div>
@@ -47,7 +47,7 @@
   <div class="form-group row">
     <label for="stakeholder_id" class="col-sm-3 text-right">Pilih Stakeholder</label>
     <div class="col-sm-9">
-      <input type="text" name="stakeholder_id" class="form-control" value="<?php echo $pengaturan->stakeholder_name ?>"  readonly>
+      <input type="text" name="stakeholder_id" class="form-control" value="<?php echo $pengaturan->stakeholder_id ?> - <?php echo $pengaturan->stakeholder_name ?>"  readonly>
     </div>
   </div>
   
