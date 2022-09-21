@@ -129,10 +129,14 @@ class Procedure extends CI_Controller {
 		}else{
 			$inp = $this->input;
 			$prodes = $inp->post('procedure_desc[]');
+			$prid = $inp->post('project_id');
+			$stkid = $inp->post('stakeholder_id');
+			$projid = explode(" - ", $prid);
+			$stakeid = explode(" - ", $stkid);
 			foreach($prodes as $ps){
 				$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
-						'project_id'	=> $inp->post('project_id'),
-						'stakeholder_id'	=> $inp->post('stakeholder_id'),
+						'project_id'	=> $projid[0],
+						'stakeholder_id'=> $stakeid[0],
 						'procedure_desc'	=> $ps,
 						'activities_id'		=> $inp->post('activities_id'),
 						'actor'				=> $inp->post('actor'),
