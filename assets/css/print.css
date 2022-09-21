@@ -1,0 +1,40 @@
+body {
+	font-family: Arial;
+	font-size: 12px;
+	background-color: #F5F5F5;
+}
+/* cetak ukuran A4 : ukuran 21 x 29,7 cm; */
+.cetak {
+	padding: 2cm;
+	width: 17cm;
+	height: 25.7cm;
+	margin: auto;
+	background-color: white;
+	border:  solid thin #EEE;
+}
+h1 {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+/* table */
+table {
+	border-collapse: collapse;
+	border: solid thin #666;
+	width: 100%;
+}
+td, th {
+	padding: 3px 6px;
+	border: solid thin #666;
+	vertical-align: middle;
+}
+/* setting alignment text */
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.text-left {
+	text-align: left         ;
+}
