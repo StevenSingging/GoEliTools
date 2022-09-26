@@ -36,8 +36,9 @@ echo form_open(site_url('user/edit/'.$user->id_user));
   <div class="col-sm-9">
     <select name="akses_level" class="form_control">
       <option value="Admin">Admin</option>
-      <option value="Perawat" <?php if ($user->akses_level=="Perawat"){ echo "selected";} ?>> Perawat
-      </option>
+     	<option value="Stakeholder">Stakeholder</option>
+      <option value="Analis">Analis</option>
+      <option value="Asisten Analis">Asisten Analis</option>
     </select>
   </div>
 </div>
