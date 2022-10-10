@@ -129,14 +129,24 @@ class Activities extends CI_Controller {
 			$projid = explode(" - ", $prid);
 			$stakeid = explode(" - ", $stkid);
 			foreach( $actdes as $ad){
-				$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
-					'project_id'	=> $projid[0],
-					'stakeholder_id'=> $stakeid[0],
-					'activities_desc'		=> $ad,
-					'parent_activities_id'=> $inp->post('activities_id'),
-					'goal_id'		=> $inp->post('goal_id'),
-					'post_date'		=> date('Y-m-d H:i:s')
-				);
+				if(empty($inp->post('activities_id'))){
+					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+						'project_id'	=> $projid[0],
+						'stakeholder_id'=> $stakeid[0],
+						'activities_desc'		=> $ad,
+						'parent_activities_id'=> $inp->post('activities_id'),
+						'post_date'		=> date('Y-m-d H:i:s')
+					);
+				}else{
+					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+						'project_id'	=> $projid[0],
+						'stakeholder_id'=> $stakeid[0],
+						'activities_desc'		=> $ad,
+						'goal_id'=> $inp->post('goal_id'),
+						'post_date'		=> date('Y-m-d H:i:s')
+					);
+				}
+				
 				// Proses oleh model
 				$this->activities_model->tambah($data);
 			}
