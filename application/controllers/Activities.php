@@ -129,7 +129,7 @@ class Activities extends CI_Controller {
 			$projid = explode(" - ", $prid);
 			$stakeid = explode(" - ", $stkid);
 			foreach( $actdes as $ad){
-				if(empty($inp->post('activities_id'))){
+				if(empty($inp->post('goal_id'))){
 					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
 						'project_id'	=> $projid[0],
 						'stakeholder_id'=> $stakeid[0],

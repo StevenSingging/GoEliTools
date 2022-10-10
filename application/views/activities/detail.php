@@ -41,24 +41,27 @@
 			<td>: <?php echo $activities->activities_desc ?></td>
 		</tr>
 		<?php 
-		if(empty($activities->parent_activities_id)){
-			echo "<tr>
+		if(empty($activities->parent_activities_id)){?>
+			<tr>
 					<td>Parent Goal</td>
 					<td>: <?php echo $activities->goal_id ?></td>
 				  </tr>
 				  <tr>
 					<td>Parent Goal Description</td>
 					<td>: <?php echo $goal->goal_desc ?></td>
-				  </tr>";
+			</tr>
+		<?php
 		}else{
-			echo "<tr>
+		?>
+			<tr>
 					<td>Parent activities</td>
 					<td>: <?php echo $activities->parent_activities_id?></td>
 				  </tr>
 				  <tr>
 					<td>Parent activities Description</td>
 					<td>: <?php echo $activities->parent_activities_desc?></td>
-				  </tr>";
+			</tr>
+		<?php 
 		}?>
 	</tbody>
 </table>
