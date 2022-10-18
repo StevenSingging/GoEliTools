@@ -1,7 +1,7 @@
 
 <?php echo form_open(site_url('procedure_detail/edit/'.$procedure_detail->procedure_detail_id)) ?>
 
-<div class="form-group row">
+<!-- <div class="form-group row">
   <label for="procedure_id" class="col-sm-3 text-right">Pilih procedure</label>
   <div class="col-sm-9">
      <textarea name="procedure_id" class="form-control" placeholder="procedure_id"><?php echo $procedure_detail->procedure_id ?>
@@ -14,7 +14,7 @@
   <div class="col-sm-9">
     <textarea name="procedure_detail_no" class="form-control" placeholder="procedure_detail"><?php echo $procedure_detail->procedure_detail_no ?></textarea>
   </div>
-</div>
+</div> -->
 
 
 <div class="form-group row">
@@ -63,13 +63,13 @@
 
 
 <div class="form-group row">
-  <label for="procedure_detail" class="col-sm-3 text-right"></label>
+  <label for="activities" class="col-sm-3 text-right"></label>
   <div class="col-sm-9">
-    <button type="btn btn-success" type="submit" name="submit" value="submit">
-      <i class="fa fa-save"></i> Simpan Data
-    </button>
-    <button type="btn btn-default" type="reset" name="reset" value="reset">
-      <i class="fa fa-times"></i> Reset
+    <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i> Simpan Data
+     </button>
+    <button type="reset" class="btn btn-info">
+                <i class="fa fa-times"></i> Reset
     </button>
   </div>
 </div>

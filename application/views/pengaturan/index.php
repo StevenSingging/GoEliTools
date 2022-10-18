@@ -40,10 +40,10 @@ echo form_open(site_url('pengaturan'));
 <div class="form-group row">
   <label for="goal" class="col-sm-3 text-right"></label>
   <div class="col-sm-9">
-    <button type="btn btn-success" type="submit" name="submit" value="submit">
+    <button class="btn btn-primary" type="submit">
       <i class="fa fa-save"></i> Simpan Data
     </button>
-    <button type="btn btn-default" type="reset" name="reset" value="reset">
+    <button class="btn btn-info" type="reset">
       <i class="fa fa-times"></i> Reset
     </button>
     

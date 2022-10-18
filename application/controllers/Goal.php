@@ -21,9 +21,11 @@ class Goal extends CI_Controller {
 	{
 		$goal = $this->goal_model->listing();
 		$total = $this->goal_model->total();
+		$listParent = $this->goal_model->listParent();
 
 		$data = array( 'title' => 'Data Goal  ('.$total->total.')',
 						'goal' => $goal,
+						'plist' => $listParent,
 						'content' => 'goal/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);
@@ -270,15 +272,15 @@ class Goal extends CI_Controller {
 							'goal_type'		=> $inp->post('goal_type'),
 							'post_date'		=> date('Y-m-d H:i:s')
 						);
-						print_r($data);
-				// $this->goal_model->tambah($data);
+						
+				$this->goal_model->tambah($data);
 			}
-			$this->load->view('goal/coba');
+			//$this->load->view('goal/tambah');
 			// Proses oleh model
 			
 			//notifikasi dan redirect
-			// $this->session->set_flashdata('sukses', 'Data telah ditambah');
-			// redirect(site_url('goal/tambah'),'refresh');
+			$this->session->set_flashdata('sukses', 'Data telah ditambah');
+			redirect(site_url('goal/tambah'),'refresh');
 			// $this->load->view('goal/coba');
 		}
 		// end masuk database
@@ -326,7 +328,7 @@ class Goal extends CI_Controller {
 							'project_id'	=> $inp->post('project_id'),
 							'stakeholder_id'=> $inp->post('stakeholder_id'),
 							'goal_desc'		=> $inp->post('goal_desc'),
-							'parent_goal_id'=> $inp->post('goal_id'),
+							'parent_goal_id'=> $inp->post('p_goal_id'),
 							'goal_type'		=> $inp->post('goal_type'),
 						);
 			// Proses oleh model
@@ -343,11 +345,23 @@ class Goal extends CI_Controller {
 	public function delete($goal_id)
 	{
 		$data = array('goal_id' => $goal_id);
-		//proses hapus
-		$this->goal_model ->delete($data);
-		//notifikasi dan redirect
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
-		redirect(site_url('goal'),'refresh');
+		$listParent = $this->goal_model->listParent();
+		
+		foreach($listParent as $lp => $value ){
+			$val = json_decode(json_encode($value), true);
+			if($data['goal_id']==$val['parent_goal_id']){
+				$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+				return redirect(site_url('goal'), 'refresh');
+			}else{
+				//proses hapus
+				$this->goal_model ->delete($data);
+				//notifikasi dan redirect
+				$this->session->set_flashdata('sukses', 'Data telah dihapus');
+				redirect(site_url('goal'),'refresh');
+			}
+			
+		}
+		$this->load->view('goal/coba');
 	}
 
 

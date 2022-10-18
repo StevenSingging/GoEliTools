@@ -39,6 +39,13 @@ class Goal_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function listParent(){
+		$this->db->select('parent_goal_id');
+		$this->db->from('goal');
+		$this->db->order_by('goal_id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 	
 	// daftar_goal_project

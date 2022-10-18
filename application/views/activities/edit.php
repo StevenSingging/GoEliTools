@@ -47,7 +47,7 @@
   <label for="parent_activities" class="col-sm-3 text-right">Parent Activities</label>
   <div class="col-sm-9">
     <select name="activities_id" class="form-control select2" >
-      <option value=""><?php echo $activities->parent_activities_id ?></option>
+      <option value="">Pilih Activities...</option>
       <!-- Ambil data activities dari Controller -->
       <?php  foreach ($activities2 as $activities2) {  ?>
         <option value="<?php echo $activities2->activities_id?>"
@@ -81,10 +81,10 @@
 <div class="form-group row">
   <label for="activities" class="col-sm-3 text-right"></label>
   <div class="col-sm-9">
-    <button type="btn btn-success" type="submit" name="submit" value="submit">
+    <button class="btn btn-primary" type="submit">
       <i class="fa fa-save"></i> Simpan Data
     </button>
-    <button type="btn btn-default" type="reset" name="reset" value="reset">
+    <button class="btn btn-info" type="reset">
       <i class="fa fa-times"></i> Reset
     </button>
   </div>

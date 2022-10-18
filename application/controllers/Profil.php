@@ -46,14 +46,14 @@ class Profil extends CI_Controller {
 				$data = array(  'id_user'	=>$id_user,
 							'nama_user'	=> $inp->post('nama_user'),
 							'email'	=> $inp->post('email'),
+							'password'	=> SHA1($inp->post('password')),
 							'akses_level'	=> $inp->post('akses_level'),
 						);
 			}else {
-				//kalau kurang dari 6 password diganti
+				//kalau kurang dari 6 password tidak diganti
 				$data = array(  'id_user'	=>$id_user,
 								'nama_user'	=> $inp->post('nama_user'),
 								'email'	=> $inp->post('email'),
-								'password'	=> SHA1($inp->post('password')),
 								'akses_level'	=> $inp->post('akses_level'),
 						);
 			}

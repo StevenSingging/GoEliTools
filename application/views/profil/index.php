@@ -26,8 +26,8 @@ echo form_open(site_url('profil'));
 <div class="form-group row">
   <label for="password" class="col-sm-3 col-form-label">Password</label>
   <div class="col-sm-9">
-    <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo set_value('password') ?>" >
-    <small class="text-danger">Minimal 6 karakter dan maksimal 32 karakter atau biarkan kosong. </small>
+    <input type="password" name="password" class="form-control" placeholder="Password">
+    <small class="text-danger"><i>  Minimal 6 karakter dan maksimal 32 karakter atau biarkan kosong.</i></small>
   </div>
 </div>
 

@@ -55,11 +55,10 @@
 <div class="form-group row">
   <label for="parent_goal" class="col-sm-3 text-right">Parent Goal</label>
   <div class="col-sm-9">
-    <select name="goal_id" class="form-control select2" >
-      <option value=""><?php echo $goal->parent_goal_id ?></option>
+    <select name="p_goal_id" class="form-control select2" >
       <!-- Ambil data goal dari Controller -->
       <?php  foreach ($goal2 as $goal2) {  ?>
-        <option value="<?php echo $goal2->goal_id?>">
+        <option value="<?php echo $goal2->goal_id ?>" <?php if($goal2->goal_id==$goal->parent_goal_id){echo "selected";} ?>>
           <?php echo $goal2->goal_id ?> - <?php echo $goal2->goal_desc ?>
         </option> 
       <?php } ?>
@@ -70,13 +69,13 @@
 
 
 <div class="form-group row">
-  <label for="goal" class="col-sm-3 text-right"></label>
+  <label for="activities" class="col-sm-3 text-right"></label>
   <div class="col-sm-9">
-    <button type="btn btn-success" type="submit" name="submit" value="submit">
-      <i class="fa fa-save"></i> Simpan Data
-    </button>
-    <button type="btn btn-default" type="reset" name="reset" value="reset">
-      <i class="fa fa-times"></i> Reset
+    <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i> Simpan Data
+     </button>
+    <button type="reset" class="btn btn-info">
+                <i class="fa fa-times"></i> Reset
     </button>
   </div>
 </div>
