@@ -107,7 +107,7 @@
         <a href="forgot-password.html">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href= "<?php echo site_url('register/index') ?>" class="text-center">Register a new membership</a>
+        <a href= "<?php echo site_url('register/index'); unset($_SESSION['failed']); ?>" class="text-center">Register a new membership</a>
       </p>
     </div>
     <!-- /.login-card-body -->

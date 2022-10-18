@@ -122,7 +122,6 @@
     <button type="reset" class="btn btn-info">
                 <i class="fa fa-times"></i> Reset
     </button>
-    
   </div>
 </div>
 

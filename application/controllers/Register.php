@@ -12,7 +12,7 @@ class Register extends CI_Controller {
 	// page register
 	public function index()
 	{
-		$this->load->view('register/index');
+		$this->load->view('register/index', 'refresh');
 	}
 
     public function regis($user_id='')
@@ -30,11 +30,11 @@ class Register extends CI_Controller {
         $this->user_model->tambah($data);
         //notifikasi dan redirect
         $this->session->set_flashdata('sukses', 'Data telah ditambah');
-        redirect(site_url('login'));
+        redirect(site_url('login'), 'refresh');
             
         }else{
-            $this->session->set_flashdata('warning', 'Username harus 5-32 karakter');
-            redirect(site_url('register'));
+            $this->session->set_Flashdata('failed', 'Username harus 5-32 karakter');
+            $this->load->view('register/index', 'refresh');
         }
     }
 

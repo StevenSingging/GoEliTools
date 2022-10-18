@@ -67,15 +67,14 @@
 </div>
 
 <div class="form-group row">
-  <label for="procedure_detail" class="col-sm-3 text-right"></label>
+  <label for="activities" class="col-sm-3 text-right"></label>
   <div class="col-sm-9">
-    <button type="btn btn-success" type="submit" name="submit" value="submit">
-      <i class="fa fa-save"></i> Simpan Data
+    <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i> Simpan Data
+     </button>
+    <button type="reset" class="btn btn-info">
+                <i class="fa fa-times"></i> Reset
     </button>
-    <button type="btn btn-default" type="reset" name="reset" value="reset">
-      <i class="fa fa-times"></i> Reset
-    </button>
-    
   </div>
 </div>
 

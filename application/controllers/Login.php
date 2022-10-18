@@ -30,6 +30,7 @@ class Login extends CI_Controller {
 	public function logout()
 	{
 		//memanggil fungsi logout dari library My_login
+		session_destroy();
 		$this->my_login->logout();
 	}
 }

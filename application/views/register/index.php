@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Refresh" content="IE=edge">
   <title>Registration Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,6 @@
   <div class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
-
       <form action="../../index.html" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Name" name="nama_user" required>
@@ -47,7 +46,8 @@
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group">
+          <label for="username"></label>
           <input type="text" class="form-control" placeholder="Username" name="username" required>
           <div class="input-group-append">
             <div class="input-group-text">
@@ -55,7 +55,13 @@
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
+        <?php
+            if($this->session->flashdata('failed')) {
+             ?>
+              <i style="color:red">*<?php echo $this->session->flashdata('failed'); ?></i>
+        <?php }
+        ?>
+        <div class="input-group mt-3 mb-3">
           <input type="password" class="form-control" placeholder="Password" name="password" required>
           <div class="input-group-append">
             <div class="input-group-text">
