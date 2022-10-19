@@ -56,7 +56,7 @@
 <div class="form-group row">
   <label for="goal" class="col-sm-3 text-right">Goal/Fitur Description</label>
   <div class="col-sm-9">
-    <input type="text" name="goal_desc" class="form-control" placeholder="goal" value="<?php echo set_value('goal_desc') ?>" required>
+    <input type="text" name="goal_desc" class="form-control" placeholder="goal description" value="<?php echo set_value('goal_desc') ?>" required>
   </div>
 </div>
 

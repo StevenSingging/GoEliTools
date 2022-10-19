@@ -177,20 +177,31 @@ class Project_stakeholder extends CI_Controller {
 	public function cetak($id)
 	{
 		$project_stakeholder= $this->project_stakeholder_model->detail($id);
-		$data = array( 'title' => $project_stakeholder->project_name,
+		if(!empty($project_stakeholder)){
+			$data = array( 'title' => $project_stakeholder->project_name,
 						'project_stakeholder' => $project_stakeholder,
 					 );
-
-		$this->load->view('project_stakeholder/cetak', $data, FALSE);
+			$this->load->view('project_stakeholder/cetak', $data, FALSE);
+		}else{
+			$this->session->set_flashdata('cetak', 'Tidak ada Data untuk di cetak');
+			redirect(site_url('project_stakeholder'), 'refresh');
+		}
 	}
 
 	// cetak seluruh
 	public function cetak_seluruh()
 	{
 		$project_stakeholder = $this->project_stakeholder_model->listing2();
-		$data = array ( 'title' => 'Cetak Seluruh Data Project_stakeholder',
-						'project_stakeholder' => $project_stakeholder);
-		$this->load->view('project_stakeholder/cetak_seluruh', $data, FALSE);
+		if(!empty($project_stakeholder)){
+			$data = array ( 'title' => 'Cetak Seluruh Data Project_stakeholder',
+			'project_stakeholder' => $project_stakeholder);
+			
+			$this->load->view('project_stakeholder/cetak_seluruh', $data, FALSE);
+		}else{
+			$this->session->set_flashdata('cetak', 'Tidak ada Data untuk di cetak');
+			redirect(site_url('project_stakeholder'), 'refresh');
+		}
+		
 	}
 
 	// delete project_stakeholder

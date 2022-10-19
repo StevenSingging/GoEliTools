@@ -1,8 +1,16 @@
+<?php if($this->session->flashdata('cetak')){
+	?>
+	<script type="text/javascript">
+		alert("Tidak Ada Data untuk di Cetak");
+	</script>
+<?php
+}unset($_SESSION['cetak']);
+?>
 <p>
 	<a href="<?php echo site_url('project_stakeholder/tambah') ?>" class="btn btn-success">
         <i class = "fa fa-plus"></i> Tambah Data Project Stakeholder
 	</a>
-	<a href ="<?php echo site_url('project_stakeholder/cetak_seluruh/') ?>" class = "btn btn-success btn-lm" target="_blank">
+	<a href ="<?php echo site_url('project_stakeholder/cetak_seluruh/') ?>" class = "btn btn-success btn-lm" target=<?php if(empty($project_stakeholder)){ echo "_self"; }else{ echo "_blank"; } ?>>
 		<i class="fa fa-print"></i> Cetak Seluruh Data Stakeholder</a>
 </p>
 

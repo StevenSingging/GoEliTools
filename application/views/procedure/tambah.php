@@ -57,7 +57,7 @@
   <label for="activities" class="col-sm-3 text-right">Activities ID</label>
   <div class="col-sm-9">
     <select name="activities_id" class="form-control select2" >
-      <option value="">Activities ID</option>
+      <option value="">Pilih Activities ID...</option>
       <!-- Ambil data activities dari Controller -->
       <?php  foreach ($activities as $activities) {  ?>
         <option value="<?php echo $activities->activities_id ?>">
@@ -72,7 +72,7 @@
 <div class="form-group row">
   <label for="actor" class="col-sm-3 text-right">Actor</label>
   <div class="col-sm-9">
-    <input type="text" name="actor" class="form-control" placeholder="actor">
+    <input type="text" name="actor" class="form-control" placeholder="actor" required>
   </div>
 </div>
 

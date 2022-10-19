@@ -101,20 +101,20 @@ class User extends CI_Controller {
 		}else{
 			$inp = $this->input;
 			// check panjang password, jika password lebih dari 6 karakter, maka password diganti
-			// jika password kurang dari 32, password tidak diganti
+			// jika password kurang dari 32, password diganti
 			if(strlen($inp->post('password')) >= 6 || strlen($inp->post('password')) <=32) {
 				// password ganti
 				$data = array(  'id_user'	=>$id_user,
 							'nama_user'	=> $inp->post('nama_user'),
 							'email'	=> $inp->post('email'),
+							'password'	=> SHA1($inp->post('password')),
 							'akses_level'	=> $inp->post('akses_level'),
 						);
 			}else {
-				//kalau kurang dari 6 password diganti
+				//kalau kurang dari 6 password tidak diganti
 				$data = array(  'id_user'	=>$id_user,
 								'nama_user'	=> $inp->post('nama_user'),
 								'email'	=> $inp->post('email'),
-								'password'	=> SHA1($inp->post('password')),
 								'akses_level'	=> $inp->post('akses_level'),
 						);
 			}
