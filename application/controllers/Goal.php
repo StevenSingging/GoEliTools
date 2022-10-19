@@ -346,20 +346,23 @@ class Goal extends CI_Controller {
 	{
 		$data = array('goal_id' => $goal_id);
 		$listParent = $this->goal_model->listParent();
+		$listActgoal = $this->goal_model->listActgoal();
 		
 		foreach($listParent as $lp => $value ){
-			$val = json_decode(json_encode($value), true);
-			if($data['goal_id']==$val['parent_goal_id']){
-				$this->session->set_flashdata('alert', 'Data Masih Digunakan');
-				return redirect(site_url('goal'), 'refresh');
-			}else{
-				//proses hapus
-				$this->goal_model ->delete($data);
-				//notifikasi dan redirect
-				$this->session->set_flashdata('sukses', 'Data telah dihapus');
-				redirect(site_url('goal'),'refresh');
+			foreach($listActgoal as $la => $hasil){
+				$hsl = json_decode(json_encode($hasil), true);
+				$val = json_decode(json_encode($value), true);
+				if($data['goal_id']==$val['parent_goal_id'] OR $data['goal_id']==$hsl['goal_id'] ){
+					$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+					return redirect(site_url('goal'), 'refresh');
+				}else{
+					//proses hapus
+					$this->goal_model ->delete($data);
+					//notifikasi dan redirect
+					$this->session->set_flashdata('sukses', 'Data telah dihapus');
+					redirect(site_url('goal'),'refresh');
+				}
 			}
-			
 		}
 		$this->load->view('goal/coba');
 	}

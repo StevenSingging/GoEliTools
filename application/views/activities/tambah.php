@@ -74,7 +74,7 @@
   <label for="parent_activities" class="col-sm-3 text-right"></label>
   <div class="col-sm-9 text-right">
       <select name="activities_id" class="form-control select2">
-        <option value="">Parent Activities...</option>
+        <option value="0">Parent Activities...</option>
         <?php  foreach ($activities as $activities) {  ?>
         <option value="<?php echo $activities->activities_id ?>">
           <?php echo $activities->activities_id ?> - <?php echo $activities->activities_desc ?>

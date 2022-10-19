@@ -130,7 +130,7 @@ class Activities extends CI_Controller {
 			$stakeid = explode(" - ", $stkid);
 			foreach( $actdes as $ad){
 				if(empty($inp->post('goal_id'))){
-					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+					$data = array( 	'id_user'	=> $this->session->userdata('id_user'),
 						'project_id'	=> $projid[0],
 						'stakeholder_id'=> $stakeid[0],
 						'activities_desc'		=> $ad,
@@ -138,11 +138,12 @@ class Activities extends CI_Controller {
 						'post_date'		=> date('Y-m-d H:i:s')
 					);
 				}else{
-					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+					$data = array( 	'id_user'	=> $this->session->userdata('id_user'),
 						'project_id'	=> $projid[0],
 						'stakeholder_id'=> $stakeid[0],
 						'activities_desc'		=> $ad,
 						'goal_id'=> $inp->post('goal_id'),
+						'parent_activities_id'=> 0,
 						'post_date'		=> date('Y-m-d H:i:s')
 					);
 				}
