@@ -359,7 +359,7 @@ class Goal extends CI_Controller {
 					//proses hapus
 					$this->goal_model ->delete($data);
 					//notifikasi dan redirect
-					$this->session->set_flashdata('sukses', 'Data telah dihapus');
+					$this->session->set_flashdata('hapus', 'Data telah dihapus');
 					redirect(site_url('goal'),'refresh');
 				}
 			}

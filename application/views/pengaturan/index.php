@@ -78,7 +78,7 @@ echo form_open(site_url('pengaturan'));
 	</tbody>
 </table>
 <?php }?>
-<a href="<?php echo site_url('dashboard') ?>" class="btn btn-success">
+<a href="<?php echo site_url('dashboard'); ?>" class="btn btn-success"> 
         <i class = "fa fa-backward"></i> Kembali
 </a>
 <?php echo form_close(); ?>

@@ -33,8 +33,18 @@ class Dashboard extends CI_Controller {
 		$project_stakeholder = $this->project_stakeholder_model->total();
 		$user 			= $this->user_model->total();
 
+		if(isset($_SESSION['sukses'])){
+			unset($_SESSION['sukses']);
+		}else if(isset($_SESSION['add'])){
+			unset($_SESSION['add']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
 		// End data total
-
 		$data = array ('title'			 => 'Halaman Dashboard',
 						'project'		=>$project,
 						'stakeholder'	=>$stakeholder,

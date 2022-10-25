@@ -31,7 +31,7 @@
                with font-awesome or any other icon font library -->
           <!-- Dashboar Page -->
           <li class="nav-item">
-            <a href="<?php echo site_url('dashboard') ?>" class="nav-link">
+            <a href="<?php echo site_url('dashboard')?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 DASHBOARD
@@ -317,8 +317,29 @@
                   <i class="icon fas fa-check"></i> 
                   <?php echo $this->session->flashdata('sukses'); ?>
                 </div>
-            <?php }
-            
+            <?php }else if($this->session->flashdata('gagal')) {
+             ?>
+              <div class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <i class="icon fas fa-check"></i> 
+                  <?php echo $this->session->flashdata('gagal'); ?>
+                </div>
+            <?php }else if($this->session->flashdata('hapus')) {
+              ?>
+               <div class="alert alert-danger alert-dismissible">
+                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                   <i class="icon fas fa-check"></i> 
+                   <?php echo $this->session->flashdata('hapus'); ?>
+                 </div>
+             <?php }else if($this->session->flashdata('add')) {
+              ?>
+               <div class="alert alert-light alert-dismissible">
+                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                   <i class="icon fas fa-check"></i> 
+                   <?php echo $this->session->flashdata('add'); ?>
+                 </div>
+             <?php
+            }
             ?>
 
             <!-- Validasi error -->
