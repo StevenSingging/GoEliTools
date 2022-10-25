@@ -88,7 +88,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('activities') ?>" class="nav-link">
+                <a href="<?php echo site_url('activities')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Aktifitas</p>
                 </a>
@@ -133,14 +133,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('procedure') ?>" class="nav-link">
+                <a href="<?php echo site_url('procedure')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Prosedur Aktifitas</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                  <a href="<?php echo site_url('procedure_detail') ?>" class="nav-link">
+                  <a href="<?php echo site_url('procedure_detail')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Detail Prosedur</p>
                 </a>
@@ -176,7 +176,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('project_stakeholder') ?>" class="nav-link">
+                <a href="<?php echo site_url('project_stakeholder')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Proyek Stakeholder</p>
                 </a>
@@ -195,7 +195,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('stakeholder') ?>" class="nav-link">
+                <a href="<?php echo site_url('stakeholder')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Stakeholder</p>
                 </a>
@@ -214,7 +214,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('project') ?>" class="nav-link">
+                <a href="<?php echo site_url('project')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Proyek</p>
                 </a>
@@ -234,14 +234,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('user') ?>" class="nav-link">
+                <a href="<?php echo site_url('user')?>" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
                   <p>Data Administrator Sistem</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="<?php echo site_url('pasien/user/tambah') ?>" class="nav-link">
+                <a href="<?php echo site_url('pasien/user/tambah')?>" class="nav-link">
                   <i class="fas fa-user-plus nav-icon"></i>
                   <p>Tambah Administrator</p>
                 </a>
@@ -252,7 +252,7 @@
           <?php } ?>
           <!-- Panduan Sistem -->
               <li class="nav-item">
-            <a href="<?php echo site_url('panduan') ?>" class="nav-link">
+            <a href="<?php echo site_url('panduan')?>" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Buku Panduan
@@ -261,7 +261,7 @@
           </li>
           <!-- Logout -->
               <li class="nav-item">
-            <a href="<?php echo site_url('login/logout') ?>" class="nav-link">
+            <a href="<?php echo site_url('login/logout')?>" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Keluar
@@ -318,6 +318,7 @@
                   <?php echo $this->session->flashdata('sukses'); ?>
                 </div>
             <?php }
+            
             ?>
 
             <!-- Validasi error -->

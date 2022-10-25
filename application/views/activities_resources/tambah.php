@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<a href="<?php echo site_url('activities_resources') ?>" class="btn btn-success">
+<a href="<?php echo site_url('activities_resources'); unset($_SESSION['sukses']); ?>" class="btn btn-success">
         <i class = "fa fa-backward"></i> Kembali
 </a>
 <?php echo form_close(); ?>

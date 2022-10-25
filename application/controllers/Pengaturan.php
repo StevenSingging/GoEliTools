@@ -45,16 +45,14 @@ class Pengaturan extends CI_Controller {
 						);
             // print_r($data);
             $this->pengaturan_model->tambah($data);
-            $this->session->set_flashdata('sukses', 'Data telah diatur  ');
+            $this->session->set_flashdata('add', 'Data telah diatur ');
 			redirect(site_url('pengaturan'),'refresh');
         }else{
-            $this->session->set_flashdata('sukses', 'Data telah gagal diatur ');
+            $this->session->set_flashdata('gagal', 'Data gagal diatur ');
 			redirect(site_url('pengaturan'),'refresh');
         }
-        
-
-        
 	}
+    
     // Hapus
     public function delete($id_user)
     {
@@ -62,7 +60,8 @@ class Pengaturan extends CI_Controller {
         //proses hapus
         $this->pengaturan_model ->delete($data);
         //notifikasi dan redirect
-        $this->session->set_flashdata('sukses', 'Data telah dihapus');
+        
+        $this->session->set_flashdata('hapus', 'Data telah dihapus');
         redirect(site_url('pengaturan'),'refresh');
     }
     

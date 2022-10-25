@@ -221,17 +221,27 @@ class Activities extends CI_Controller {
 	// Hapus
 	public function delete($activities_id)
 	{
-		$activities = $this->activities_model->listing2();
+		$listParent = $this->activities_model->listParent();
+		$listActres = $this->activities_model->listActres();
+
 		$data = array('activities_id' => $activities_id);
-		foreach($activities->activities_id as $act){
-			print_r($act);
+		
+		foreach($listParent as $lp => $value ){
+			foreach($listActres as $la => $hasil){
+				$hsl = json_decode(json_encode($hasil), true);
+				$val = json_decode(json_encode($value), true);
+				if($data['activities_id']==$val['parent_activities_id'] OR $data['activities_id']==$hsl['activities_id'] ){
+					$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+					return redirect(site_url('activities'), 'refresh');
+				}else{
+					//proses hapus
+					$this->goal_model ->delete($data);
+					//notifikasi dan redirect
+					$this->session->set_flashdata('danger', 'Data telah dihapus');
+					redirect(site_url('activities'),'refresh');
+				}
+			}
 		}
-		//proses hapus
-		//$this->activities_model ->delete($data);
-		//notifikasi dan redirect
-		//$this->session->set_flashdata('sukses', 'Data telah dihapus');
-		//redirect(site_url('activities'),'refresh');
-		$this->load->view('activities/coba');
 	}
 
 

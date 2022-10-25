@@ -125,7 +125,7 @@
   </div>
 </div>
 
-<a href="<?php echo site_url('activities'); unset($_SESSION['sukses']);?>" class="btn btn-success">
+<a href="<?php echo site_url('activities'); unset($_SESSION['sukses']); ?>" class="btn btn-success">
         <i class = "fa fa-backward"></i> Kembali
 </a>
 <script>

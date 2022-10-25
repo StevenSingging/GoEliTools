@@ -1,3 +1,14 @@
+<?php
+if($this->session->flashdata('alert')){
+?>
+
+<script type="text/javascript">
+    alert("Data ini masih digunakan");
+</script>
+
+<?php
+}unset($_SESSION['alert']);
+?>
 <p>
 	<a href="<?php echo site_url('activities/tambah') ?>" class="btn btn-success">
         <i class = "fa fa-plus"></i> Tambah Aktivitas

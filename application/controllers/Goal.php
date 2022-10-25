@@ -364,7 +364,7 @@ class Goal extends CI_Controller {
 				}
 			}
 		}
-		$this->load->view('goal/coba');
+		//$this->load->view('goal/coba');
 	}
 
 
