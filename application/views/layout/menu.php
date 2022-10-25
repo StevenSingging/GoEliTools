@@ -34,8 +34,8 @@
             <a href="<?php echo site_url('dashboard') ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
-                <span class="right badge badge-danger">New</span>
+                DASHBOARD
+                <span class="right badge badge-danger">Baru</span>
               </p>
             </a>
           </li>
@@ -44,8 +44,8 @@
             <a href="<?php echo site_url('pengaturan') ?>" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>
-                Pengaturan
-                <span class="right badge badge-danger">New</span>
+                PENGATURAN
+                <span class="right badge badge-danger">Baru</span>
               </p>
             </a>
           </li>
@@ -53,9 +53,9 @@
           <!-- Menu Project Goal  -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-compass"></i>
+             <i class="nav-icon fas fa-bullseye"></i>
               <p>
-                GOAL DAN FITUR SYSTEM
+                GOAL DAN FITUR SISTEM
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -80,9 +80,9 @@
           <!-- Menu GOAL ACTIVITIES  -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-project-diagram"></i>
+              <i class="nav-icon fas fa-folder"></i>
               <p>
-                DATA AKTIVITAS GOAL
+                DATA AKTIFITAS GOAL
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -90,14 +90,14 @@
               <li class="nav-item">
                 <a href="<?php echo site_url('activities') ?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
-                  <p>Data Aktivitas</p>
+                  <p>Data Aktifitas</p>
                 </a>
               </li>
 
                <li class="nav-item">
                   <a href="<?php echo site_url('activities_resources') ?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
-                  <p>Data Sumber Daya Aktivitas</p>
+                  <p>Data Sumber Daya Aktifitas</p>
                 </a>
               </li>
               
@@ -105,14 +105,14 @@
               <li class="nav-item">
                   <a href="<?php echo site_url('activities_obstacle') ?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
-                  <p>Data Obstacle Aktivitas</p>
+                  <p>Data Obstacle Aktifitas</p>
                 </a>
               </li>
 
               <li class="nav-item">
                   <a href="<?php echo site_url('activities_actor') ?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
-                  <p>Data Aktor Aktivitas</p>
+                  <p>Data Aktor Aktifitas</p>
                 </a>
               </li>
               -->
@@ -170,7 +170,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-tie"></i>
               <p>
-                PROJECT STAKEHOLDER
+                PROYEK STAKEHOLDER
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -178,7 +178,7 @@
               <li class="nav-item">
                 <a href="<?php echo site_url('project_stakeholder') ?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
-                  <p>Data Project Stakeholder</p>
+                  <p>Data Proyek Stakeholder</p>
                 </a>
               </li>
             </ul>
@@ -206,9 +206,9 @@
           <!-- Menu Project  -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-folder"></i>
+              <i class="nav-icon fas fa-project-diagram"></i>
               <p>
-                DATA PROJECT
+                DATA PROYEK
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -216,7 +216,7 @@
               <li class="nav-item">
                 <a href="<?php echo site_url('project') ?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
-                  <p>Data Project</p>
+                  <p>Data Proyek</p>
                 </a>
               </li>
             </ul>
@@ -226,7 +226,7 @@
            <!-- Data User menu -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-lock"></i>
+              <i class="nav-icon fas fa-user-lock"></i>
               <p>
                 DATA ADMIN SISTEM
                 <i class="fas fa-angle-left right"></i>
@@ -235,14 +235,14 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url('user') ?>" class="nav-link">
-                  <i class="fas fa-table nav-icon"></i>
+                  <i class="fas fa-users nav-icon"></i>
                   <p>Data Administrator Sistem</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="<?php echo site_url('pasien/user/tambah') ?>" class="nav-link">
-                  <i class="fas fa-plus nav-icon"></i>
+                  <i class="fas fa-user-plus nav-icon"></i>
                   <p>Tambah Administrator</p>
                 </a>
               </li>
@@ -264,7 +264,7 @@
             <a href="<?php echo site_url('login/logout') ?>" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
-                Logout
+                Keluar
               </p>
             </a>
           </li>

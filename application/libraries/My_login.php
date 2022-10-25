@@ -38,13 +38,12 @@ class My_login
 
 			// End proses create session untuk login
 			//redirect ke halaman dashboard
-			$this->CI->session->set_flashdata('sukses','Anda berhasil login');
 			redirect(site_url('dashboard'));
 			
 
 		}else{
 			// jika tidak ada, maka suruh login lagi. Login gagal
-			$this->CI->session->set_flashdata('warning', 'Username atau password salah' .$password);
+			$this->CI->session->set_flashdata('warning', 'Username atau password salah ' .$password);
 			redirect(site_url('login'));
 			
 		}
@@ -58,7 +57,7 @@ class My_login
 			$this->CI->session->userdata('akses_level')=="")
 		{
 			// kalau username dan akses level kosong, suruh login lagi
-			$this->CI->session->set_flashdata('warning', 'Anda belum login');
+			$this->CI->session->set_flashdata('warning', 'Anda belum login ');
 			redirect(site_url('login'));
 		}
 	}
