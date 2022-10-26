@@ -223,6 +223,7 @@ class Activities extends CI_Controller {
 	{
 		$listParent = $this->activities_model->listParent();
 		$listActres = $this->activities_model->listActres();
+		$listActres = $this->procedure_model->listActres();
 
 		$data = array('activities_id' => $activities_id);
 		
