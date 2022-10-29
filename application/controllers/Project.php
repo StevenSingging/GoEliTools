@@ -26,7 +26,7 @@ class Project extends CI_Controller {
 		if($valid->run()===FALSE) {
 		//end validasi
 
-		$data = array( 'title' => 'Data Project ('.$total->total.')',
+		$data = array( 'title' => 'Data Proyek ('.$total->total.')',
 						'project' => $project,
 						'content' => 'project/index'
 					 );

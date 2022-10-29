@@ -2,7 +2,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah User Baru</h4>
+              <h4 class="modal-title">Tambah Pengguna Baru</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -10,7 +10,7 @@
             <div class="modal-body">
               
               <div class="form-group row">
-                  <label for="nama_user" class="col-sm-3 col-form-label">Nama User</label>
+                  <label for="nama_user" class="col-sm-3 col-form-label">Nama Pengguna</label>
                   <div class="col-sm-9">
                     <input type="text" name="nama_user" class="form-control" placeholder="Nama User" value="<?php echo set_value('nama_user') ?>" required>
                   </div>
@@ -42,7 +42,9 @@
                   <div class="col-sm-9">
                     <select name="akses_level" class="form_control">
                       <option value="Admin">Admin</option>
-                      <option value="Perawat">Perawat</option>
+                      <option value="Perawat">Stakeholder</option>
+                      <option value="Perawat">Analis</option>
+                      <option value="Perawat">Asisten Analis</option>
                     </select>
                   </div>
               </div>

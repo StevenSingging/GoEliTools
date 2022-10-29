@@ -24,7 +24,7 @@ class Procedure extends CI_Controller {
 		$procedure = $this->procedure_model->listing();
 		$total = $this->procedure_model->total();
 
-		$data = array( 'title' => 'Data Procedure  ('.$total->total.')',
+		$data = array( 'title' => 'Data Prosedur  ('.$total->total.')',
 						'procedure' => $procedure,
 						'content' => 'procedure/index'
 					 );

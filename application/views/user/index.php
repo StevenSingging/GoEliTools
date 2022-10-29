@@ -6,7 +6,7 @@ echo form_open(site_url('user'));
 
 <p>
 	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-default">
-            <i class= "fa fa-plus"> </i> Tambah User Baru
+            <i class= "fa fa-plus"> </i> Tambah Pengguna Baru
     </button>
 </p>
 <?php

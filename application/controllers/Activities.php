@@ -23,7 +23,7 @@ class Activities extends CI_Controller {
 		$activities = $this->activities_model->listing();
 		$total = $this->activities_model->total();
 
-		$data = array( 'title' => 'Data Activities  ('.$total->total.')',
+		$data = array( 'title' => 'Data Aktifitas  ('.$total->total.')',
 						'activities' => $activities,
 						'content' => 'activities/index'
 					 );

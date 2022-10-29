@@ -19,7 +19,7 @@ class Project_stakeholder extends CI_Controller {
 		$project_stakeholder = $this->project_stakeholder_model->listing();
 		$total = $this->project_stakeholder_model->total();
 
-		$data = array( 'title' => 'Data Project Stakeholder('.$total->total.')',
+		$data = array( 'title' => 'Data Proyek Stakeholder('.$total->total.')',
 						'project_stakeholder' => $project_stakeholder,
 						'content' => 'project_stakeholder/index'
 					 );

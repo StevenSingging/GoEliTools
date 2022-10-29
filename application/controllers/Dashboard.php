@@ -13,6 +13,10 @@ class Dashboard extends CI_Controller {
 		 $this->load->model('project_model');
 		 $this->load->model('stakeholder_model');
 		 $this->load->model('project_stakeholder_model');
+		 $this->load->model('goal_model');
+		 $this->load->model('activities_model');
+		 $this->load->model('procedure_model');
+		 $this->load->model('procedure_detail_model');
 
 	}
 
@@ -32,6 +36,10 @@ class Dashboard extends CI_Controller {
 		$stakeholder	= $this->stakeholder_model->total();
 		$project_stakeholder = $this->project_stakeholder_model->total();
 		$user 			= $this->user_model->total();
+		$goal 			= $this->goal_model->total();
+		$activities		= $this->activities_model->total();
+		$procedure		= $this->procedure_model->total();
+		$procdet		= $this->procedure_detail_model->total();
 
 		if(isset($_SESSION['sukses'])){
 			unset($_SESSION['sukses']);
@@ -50,6 +58,10 @@ class Dashboard extends CI_Controller {
 						'stakeholder'	=>$stakeholder,
 						'project_stakeholder' =>$project_stakeholder,
 						'user'			=>$user,
+						'goal'			=>$goal,
+						'activities'	=>$activities,
+						'procedure'		=>$procedure,
+						'procdet'		=>$procdet,
 						'content'		=> 'dashboard/index'
 					   );
 		$this->load->view('layout/wrapper', $data, FALSE);

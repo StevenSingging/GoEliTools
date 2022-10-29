@@ -239,13 +239,6 @@
                   <p>Data Administrator Sistem</p>
                 </a>
               </li>
-
-              <li class="nav-item">
-                <a href="<?php echo site_url('pasien/user/tambah')?>" class="nav-link">
-                  <i class="fas fa-user-plus nav-icon"></i>
-                  <p>Tambah Administrator</p>
-                </a>
-              </li>
             </ul>
           </li>
 

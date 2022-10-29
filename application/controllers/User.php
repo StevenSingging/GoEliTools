@@ -49,7 +49,7 @@ class User extends CI_Controller {
 		if($valid->run()===FALSE) {
 		//end validasi
 
-		$data = array( 'title' => 'Data User Administrator ('.$total->total.')',
+		$data = array( 'title' => 'Data Administrator Sistem ('.$total->total.')',
 						'user' => $user,
 						'content' => 'user/index'
 					 );

@@ -5,10 +5,10 @@ echo form_open(site_url('pengaturan'));
 ?>
 
 <div class="form-group row">
-  <label for="project_id" class="col-sm-3 text-right">Pilih Project</label>
+  <label for="project_id" class="col-sm-3 text-right">Pilih Proyek</label>
   <div class="col-sm-9">
     <select name="project_id" class="form-control select2" required>
-      <option value="">Pilih Project .....</option>
+      <option value="">Pilih Proyek .....</option>
       <!-- Ambil data project dari Controller -->
       <?php foreach ($project as $project) { ?>
         <option value="<?php echo $project->project_id ?>">

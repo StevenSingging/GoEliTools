@@ -24,7 +24,7 @@ class Procedure_detail extends CI_Controller {
 		$procedure_detail = $this->procedure_detail_model->listing();
 		$total = $this->procedure_detail_model->total();
 
-		$data = array( 'title' => 'Data Procedure_detail  ('.$total->total.')',
+		$data = array( 'title' => 'Data Detail Prosedur  ('.$total->total.')',
 						'procedure_detail' => $procedure_detail,
 						'content' => 'procedure_detail/index'
 					 );

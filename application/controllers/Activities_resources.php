@@ -23,7 +23,7 @@ class Activities_resources extends CI_Controller {
 		$activities_resources = $this->activities_resources_model->listing();
 		$total = $this->activities_resources_model->total();
 
-		$data = array( 'title' => 'Data Activities Resources ('.$total->total.')',
+		$data = array( 'title' => 'Data Sumber Daya Aktifitas ('.$total->total.')',
 						'activities_resources' => $activities_resources,
 						'content' => 'activities_resources/index'
 					 );
