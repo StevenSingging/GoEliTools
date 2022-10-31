@@ -15,7 +15,7 @@
           <img src="<?php echo base_url() ?>assets/admin/dist/img/logo_arem.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="<?php echo site_url ('profil') ?>" class="d-block">
+          <a href="<?php echo site_url ('profil')?>" class="d-block">
             <?php echo $this->session->userdata('nama'); ?>
             <br> <small> (<?php echo $this->session->userdata('akses_level'); ?>) </small>
             <!-- <br> <small> (<?php echo $this->session->userdata('id_user'); ?>) </small> -->
@@ -41,7 +41,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo site_url('pengaturan') ?>" class="nav-link">
+            <a href="<?php echo site_url('pengaturan')?>" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 PENGATURAN
@@ -61,14 +61,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('goal') ?>" class="nav-link">
+                <a href="<?php echo site_url('goal')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Goal</p>
                 </a>
               </li>
 
                <li class="nav-item">
-                  <a href="<?php echo site_url('goal') ?>" class="nav-link">
+                  <a href="<?php echo site_url('goal')?>" class="nav-link">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Fitur Goal</p>
                 </a>
@@ -245,13 +245,22 @@
           <?php } ?>
           <!-- Panduan Sistem -->
               <li class="nav-item">
-            <a href="<?php echo site_url('panduan')?>" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Buku Panduan
-              </p>
-            </a>
-          </li>
+                <a href="<?php echo site_url('panduan')?>" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    BUKU PANDUAN
+                  </p>
+                </a>
+              </li>
+            <!-- Laporan -->
+            <li class="nav-item">
+                <a href="<?php echo site_url('laporan'); unset($_SESSION['sukses']);?>" class="nav-link">
+                  <i class="nav-icon fas fa-book-open"></i>
+                  <p>
+                    LAPORAN
+                  </p>
+                </a>
+              </li>
           <!-- Logout -->
               <li class="nav-item">
             <a href="<?php echo site_url('login/logout')?>" class="nav-link">

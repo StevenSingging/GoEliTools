@@ -8,7 +8,7 @@
 ?>
 <p>
 	<a href="<?php echo site_url('project_stakeholder/tambah') ?>" class="btn btn-success">
-        <i class = "fa fa-plus"></i> Tambah Data Project Stakeholder
+        <i class = "fa fa-plus"></i> Tambah Data Proyek Stakeholder
 	</a>
 	<a href ="<?php echo site_url('project_stakeholder/cetak_seluruh/') ?>" class = "btn btn-success btn-lm" target=<?php if(empty($project_stakeholder)){ echo "_self"; }else{ echo "_blank"; } ?>>
 		<i class="fa fa-print"></i> Cetak Seluruh Data Stakeholder</a>

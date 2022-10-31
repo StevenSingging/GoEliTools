@@ -133,6 +133,56 @@ class Goal_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->row();
 	}
+
+	// ambil laporan data goal
+	public function laporanGoal()
+	{
+		$this->db->select('count(goal.goal_id) as jumlah,
+						   goal.stakeholder_id, 
+						   stakeholder.stakeholder_id,
+						   stakeholder.stakeholder_name
+			');
+		$this->db->from('goal');
+		// join
+		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = goal.stakeholder_id', 'left');
+		//end join
+		$this->db->group_by('goal.stakeholder_id', 'asc');
+		$this->db->where('goal.stakeholder_id = stakeholder.stakeholder_id');
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function laporanAct()
+	{
+		$this->db->select('count(activities.activities_id) as jumlah,
+						   activities.stakeholder_id, 
+						   stakeholder.stakeholder_id,
+						   stakeholder.stakeholder_name
+			');
+		$this->db->from('activities');
+		// join
+		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = activities.stakeholder_id', 'left');
+		//end join
+		$this->db->group_by('activities.stakeholder_id', 'asc');
+		$this->db->where('activities.stakeholder_id = stakeholder.stakeholder_id');
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function laporanProc()
+	{
+		$this->db->select('count(procedure.procedure_id) as jumlah,
+						   procedure.stakeholder_id, 
+						   stakeholder.stakeholder_id,
+						   stakeholder.stakeholder_name
+			');
+		$this->db->from('procedure');
+		// join
+		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = procedure.stakeholder_id', 'left');
+		//end join
+		$this->db->group_by('procedure.stakeholder_id', 'asc');
+		$this->db->where('procedure.stakeholder_id = stakeholder.stakeholder_id');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
 	
 	// hitung total goal
@@ -141,6 +191,14 @@ class Goal_model extends CI_Model {
 		$this->db->select('count(*) as total');
 		$this->db->from('goal');
 		$this->db->order_by('goal_id', 'desc');
+		$query = $this->db->get();
+		return $query->row();
+	}
+	public function laporan()
+	{
+		$this->db->select('count(*) as total');
+		$this->db->from('goal');
+		$this->db->group_by('stakeholder_id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}

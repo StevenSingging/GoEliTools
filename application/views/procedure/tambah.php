@@ -1,12 +1,12 @@
-
 <?php echo form_open(site_url('procedure/tambah')) ?>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php if( empty($pengaturan) ){ ?>
 <div class="form-group row">
-  <label for="project_id" class="col-sm-3 text-right">Pilih Project</label>
+  <label for="project_id" class="col-sm-3 text-right">Pilih Proyek</label>
   <div class="col-sm-9">
     <select name="project_id" class="form-control select2" required>
-      <option value="">Pilih Project .....</option>
+      <option value="">Pilih Proyek .....</option>
       <!-- Ambil data project dari Controller -->
       <?php foreach ($project as $project) { ?>
         <option value="<?php echo $project->project_id ?>">
@@ -35,7 +35,7 @@
 </div>
 <?php } elseif ($pengaturan && $pengaturan->project_id != null) { ?>
   <div class="form-group row">
-    <label for="project_id" class="col-sm-3 text-right">Pilih Project</label>
+    <label for="project_id" class="col-sm-3 text-right">Pilih Proyek</label>
     <div class="col-sm-9">
    
       <input type="text" name="project_id" class="form-control" value="<?php echo $pengaturan->project_id ?> - <?php echo $pengaturan->project_name ?>"  readonly>
@@ -54,10 +54,10 @@
 <?php }?>
 
 <div class="form-group row">
-  <label for="activities" class="col-sm-3 text-right">Activities ID</label>
+  <label for="activities" class="col-sm-3 text-right">ID Aktifitas</label>
   <div class="col-sm-9">
     <select name="activities_id" class="form-control select2" >
-      <option value="">Pilih Activities ID...</option>
+      <option value="">Pilih ID Aktifitas...</option>
       <!-- Ambil data activities dari Controller -->
       <?php  foreach ($activities as $activities) {  ?>
         <option value="<?php echo $activities->activities_id ?>">
@@ -70,25 +70,25 @@
 </div>
 
 <div class="form-group row">
-  <label for="actor" class="col-sm-3 text-right">Actor</label>
+  <label for="actor" class="col-sm-3 text-right">Aktor</label>
   <div class="col-sm-9">
     <input type="text" name="actor" class="form-control" placeholder="actor" required>
   </div>
 </div>
 
 <div class="form-group row">
-  <label for="procedure_resources" class="col-sm-3 text-right">Procedure resources</label>
+  <label for="procedure_resources" class="col-sm-3 text-right">Sumber Daya Prosedur</label>
   <div class="col-sm-9">
-    <input type="text" name="procedure_resources" class="form-control" placeholder="procedure">
+    <input type="text" name="procedure_resources" class="form-control" placeholder="Sumber Daya Prosedur">
   </div>
 </div>
 
 <div class="form-group row">
-  <label for="procedure" class="col-sm-3 text-right">Procedure Description</label>
+  <label for="procedure" class="col-sm-3 text-right">Deskripsi Prosedur</label>
   <div class="col-sm-9">
     <div class="input-group-append mb-2">
-          <input type="text" name="procedure_desc[]" class="form-control" placeholder="Procedure Description" required>
-          <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-1">Add +</button>
+          <input type="text" name="procedure_desc[]" class="form-control" placeholder="Deskripsi Prosedur" required>
+          <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-1">Tambah +</button>
     </div>
     <div class="container1">
 
@@ -123,7 +123,7 @@
           e.preventDefault();
           if (x < max_fields) {
               x++;
-              $(wrapper).append('<div class="input-group-append mb-2"><input type="text" name="procedure_desc[]" class="form-control" placeholder="Procedure Description" required><button style="width:100px" class="delete btn btn-danger btn-sm ml-1">Delete</button></div>'); //add input box
+              $(wrapper).append('<div class="input-group-append mb-2"><input type="text" name="procedure_desc[]" class="form-control" placeholder="Deskripsi Prosedur" required><button style="width:100px" class="delete btn btn-danger btn-sm ml-1">Hapus</button></div>'); //add input box
           } else {
               alert('You Reached the limits')
           }

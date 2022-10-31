@@ -4,10 +4,10 @@
 
 <?php if( empty($pengaturan) ){ ?>
 <div class="form-group row">
-  <label for="project_id" class="col-sm-3 text-right">Pilih Project</label>
+  <label for="project_id" class="col-sm-3 text-right">Pilih Proyek</label>
   <div class="col-sm-9">
     <select name="project_id" class="form-control select2" required>
-      <option value="">Pilih Project .....</option>
+      <option value="">Pilih Proyek .....</option>
       <!-- Ambil data project dari Controller -->
       <?php foreach ($project as $project) { ?>
         <option value="<?php echo $project->project_id ?>">
@@ -36,7 +36,7 @@
 </div>
 <?php } elseif ($pengaturan && $pengaturan->project_id != null) { ?>
   <div class="form-group row">
-    <label for="project_id" class="col-sm-3 text-right">Pilih Project</label>
+    <label for="project_id" class="col-sm-3 text-right">Pilih Proyek</label>
     <div class="col-sm-9">
    
       <input type="text" name="project_id" class="form-control" value="<?php echo $pengaturan->project_id ?> - <?php echo $pengaturan->project_name ?>"  readonly>
@@ -55,11 +55,11 @@
 <?php }?>
 
 <div class="form-group row">
-  <label for="activities" class="col-sm-3 text-right">Pilih Parent Activities/Goal</label>
+  <label for="activities" class="col-sm-3 text-right">Pilih Aktifitas/Goal</label>
   <div class="col-sm-9">
     <div class="form-check col">
       <input class="form-check-input" type="radio" name="rdbtn" id="rdbtnact" checked>
-      <label class="form-check-label mr-4" for="flexRadioAct">Activities</label>
+      <label class="form-check-label mr-4" for="flexRadioAct">Aktifitas</label>
       <input class="form-check-input" type="radio" name="rdbtn" id="rdbtngoal">
       <label class="form-check-label" for="flexRadioGoal">Goal</label>
     </div>
@@ -74,7 +74,7 @@
   <label for="parent_activities" class="col-sm-3 text-right"></label>
   <div class="col-sm-9 text-right">
       <select name="activities_id" class="form-control select2">
-        <option value="0">Parent Activities...</option>
+        <option value="0">Pilih Aktifitas ...</option>
         <?php  foreach ($activities as $activities) {  ?>
         <option value="<?php echo $activities->activities_id ?>">
           <?php echo $activities->activities_id ?> - <?php echo $activities->activities_desc ?>
@@ -100,11 +100,11 @@
 </div>
 
 <div class="form-group row">
-  <label for="activities" class="col-sm-3 text-right">Activities Description</label>
+  <label for="activities" class="col-sm-3 text-right">Deskripsi Aktifitas</label>
   <div class="col-sm-9">
     <div class="input-group-append mb-2">
-          <input type="text" name="activities_desc[]" class="form-control" placeholder="activities" required>
-          <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-1">Add +</button>
+          <input type="text" name="activities_desc[]" class="form-control" placeholder="Deskripsi Aktifitas" required>
+          <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-1">Tambah +</button>
     </div>
     <div class="container1">
 
@@ -151,7 +151,7 @@
           e.preventDefault();
           if (x < max_fields) {
               x++;
-              $(wrapper).append('<div class="input-group-append mb-2"><input type="text" name="activities_desc[]" class="form-control" placeholder="activities" required><button style="width:100px" class="delete btn btn-danger btn-sm ml-1">Delete</button></div>'); //add input box
+              $(wrapper).append('<div class="input-group-append mb-2"><input type="text" name="activities_desc[]" class="form-control" placeholder="activities" required><button style="width:100px" class="delete btn btn-danger btn-sm ml-1">Hapus</button></div>'); //add input box
           } else {
               alert('You Reached the limits')
           }
