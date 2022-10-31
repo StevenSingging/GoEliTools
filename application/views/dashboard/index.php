@@ -90,11 +90,11 @@
     </div>
     <!-- /.info-box -->
 
-    <p class="btn btn-group btn-block">
-      <a href="<?php echo site_url('user') ?>" class="btn btn-success">
-        <i class="fa fa-bullseye"></i> Data Goal
-      <a href="<?php echo site_url('user') ?>" class="btn btn-info">
-        <i class="fa fa-plus"></i> Tambah Goal
+     <p class="btn btn-group btn-block">
+      <a href="<?php echo site_url('goal') ?>" class="btn btn-success">
+        <i class="fa fa-users"></i> Data Goal
+      <a href="<?php echo site_url('goal/tambah') ?>" class="btn btn-info">
+        <i class="fa fa-plus"></i> Tambah Goal Baru
       </a>
     </p>
 
@@ -115,10 +115,10 @@
     <!-- /.info-box -->
 
     <p class="btn btn-group btn-block">
-      <a href="<?php echo site_url('user') ?>" class="btn btn-success">
-        <i class="fa fa-folder"></i> Data Aktifitas
-      <a href="<?php echo site_url('user') ?>" class="btn btn-info">
-        <i class="fa fa-plus"></i> Tambah Aktifitas
+      <a href="<?php echo site_url('activities') ?>" class="btn btn-success">
+        <i class="fa fa-users"></i> Data Aktivitas
+      <a href="<?php echo site_url('activities/tambah') ?>" class="btn btn-info">
+        <i class="fa fa-plus"></i> Tambah Aktivitas Baru
       </a>
     </p>
 
@@ -139,10 +139,10 @@
     <!-- /.info-box -->
 
     <p class="btn btn-group btn-block">
-      <a href="<?php echo site_url('user') ?>" class="btn btn-success">
-        <i class="fa fa-tasks"></i> Data Prosedur
-      <a href="<?php echo site_url('user') ?>" class="btn btn-info">
-        <i class="fa fa-plus"></i> Tambah Prosedur
+      <a href="<?php echo site_url('procedure') ?>" class="btn btn-success">
+        <i class="fa fa-users"></i> Data Prosedur
+      <a href="<?php echo site_url('procedure/tambah') ?>" class="btn btn-info">
+        <i class="fa fa-plus"></i> Tambah Prosedur Baru
       </a>
     </p>
 
@@ -162,11 +162,11 @@
     </div>
     <!-- /.info-box -->
 
-    <p class="btn btn-group btn-block">
-      <a href="<?php echo site_url('user') ?>" class="btn btn-success">
-        <i class="fa fa-spinner"></i> Data Detail Prosedur
-      <a href="<?php echo site_url('user') ?>" class="btn btn-info">
-        <i class="fa fa-plus"></i> Tambah Detail Prosedur
+   <p class="btn btn-group btn-block">
+      <a href="<?php echo site_url('procedure_detail') ?>" class="btn btn-success">
+        <i class="fa fa-users"></i> Data Detail Prosedur
+      <a href="<?php echo site_url('procedure_detail/tambah') ?>" class="btn btn-info">
+        <i class="fa fa-plus"></i> Tambah Detail Prosedur Baru
       </a>
     </p>
 
