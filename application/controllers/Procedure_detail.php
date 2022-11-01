@@ -105,6 +105,7 @@ class Procedure_detail extends CI_Controller {
 			$prodes = $inp->post('procedure_detail_desc[]');
 			$predes = $inp->post('pre_condition[]');
 			$postdes = $inp->post('post_condition[]');
+			$res 	= $inp->post('resources[]');
 			$propre = array_combine($prodes, $predes);
 			foreach ($propre as $p => $key){
 				$data = array( 	'procedure_detail_id' => $inp->post('procedure_id').'-'.$pid,
@@ -116,7 +117,7 @@ class Procedure_detail extends CI_Controller {
 							'post_condition'	=> $postdes[$i],
 							'formula'=> $inp->post('formula'),
 							'actor'=> $inp->post('actor'),
-							'resources'=> $inp->post('resources'),
+							'resources'=> $res[$i],
 							'post_date'		=> date('Y-m-d H:i:s')
 						);
 				$i++;

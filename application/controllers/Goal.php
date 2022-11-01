@@ -220,6 +220,7 @@ class Goal extends CI_Controller {
 		$project = $this->project_model->listing();
 		$stakeholder = $this->stakeholder_model->listing();
 		$goal=$this->goal_model->listing2();
+		$goal2 = $this->goal_model->listing();
 		$user_id = $this->session->userdata('id_user');
 		$pengaturan = $this->pengaturan_model->detail($user_id);
 
@@ -252,36 +253,65 @@ class Goal extends CI_Controller {
 			$stkid = $inp->post('stakeholder_id');
 			$projid = explode(" - ", $prid);
 			$stakeid = explode(" - ", $stkid);
-			$data = array('id_user'=> $this->session->userdata('id_user'),
-				'project_id'	=> $projid[0],
-				'stakeholder_id'=> $stakeid[0],
-				'parent_goal_id'=> 0,
-				'goal_desc'		=> $inp->post('goal_desc'),
-				'goal_type'		=> $inp->post('goal_type'),
-				'post_date'		=> date('Y-m-d H:i:s')
-			);
-			$this->goal_model->tambah($data);
-			$pgid = $this->goal_model->getId();
-			$sub = $inp->post('subgoal[]');
-			foreach( $sub as $s ){
+			if($inp->post('goal_id')!="pilihan"){
+				$sub = $inp->post('subgoal[]');
 				$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
-							'project_id'	=> $projid[0],
-							'stakeholder_id'=> $stakeid[0],
-							'goal_desc'		=> $s,
-							'parent_goal_id'=> $pgid,
-							'goal_type'		=> $inp->post('goal_type'),
-							'post_date'		=> date('Y-m-d H:i:s')
-						);
-						
+								'project_id'	=> $projid[0],
+								'stakeholder_id'=> $stakeid[0],
+								'goal_desc'		=> $inp->post('goal_desc'),
+								'parent_goal_id'=> $inp->post('goal_id'),
+								'goal_type'		=> $inp->post('goal_type'),
+								'post_date'		=> date('Y-m-d H:i:s')
+							);
+							$this->goal_model->tambah($data);
+				foreach( $sub as $s ){
+					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+								'project_id'	=> $projid[0],
+								'stakeholder_id'=> $stakeid[0],
+								'goal_desc'		=> $s,
+								'parent_goal_id'=> $inp->post('goal_id'),
+								'goal_type'		=> $inp->post('goal_type'),
+								'post_date'		=> date('Y-m-d H:i:s')
+							);
+							//print_r($data);
+					$this->goal_model->tambah($data);
+				}
+			}else{
+				$data = array('id_user'=> $this->session->userdata('id_user'),
+					'project_id'	=> $projid[0],
+					'stakeholder_id'=> $stakeid[0],
+					'parent_goal_id'=> 0,
+					'goal_desc'		=> $inp->post('goal_desc'),
+					'goal_type'		=> $inp->post('goal_type'),
+					'post_date'		=> date('Y-m-d H:i:s')
+				);
 				$this->goal_model->tambah($data);
+				//print_r($data);
+				$pgid = $this->goal_model->getId();
+				$sub = $inp->post('subgoal[]');
+				foreach( $sub as $s ){
+					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+								'project_id'	=> $projid[0],
+								'stakeholder_id'=> $stakeid[0],
+								'goal_desc'		=> $s,
+								'parent_goal_id'=> $pgid,
+								'goal_type'		=> $inp->post('goal_type'),
+								'post_date'		=> date('Y-m-d H:i:s')
+							);
+					//print_r($data);
+					$this->goal_model->tambah($data);
+				}
+				
 			}
+			//$this->goal_model->tambah($data);
+			
 			//$this->load->view('goal/tambah');
 			// Proses oleh model
 			
 			//notifikasi dan redirect
 			$this->session->set_flashdata('sukses', 'Data telah ditambah');
 			redirect(site_url('goal/tambah'),'refresh');
-			// $this->load->view('goal/coba');
+			//$this->load->view('goal/coba');
 		}
 		// end masuk database
 	}

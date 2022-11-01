@@ -1,37 +1,5 @@
 <?php echo form_open(site_url('goal/tambah')) ?>
  <!-- /.card-header -->
-<?php
-if($this->session->flashdata('sukses')) {
- ?>
-  <div class="alert alert-success alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <i class="icon fas fa-check"></i> 
-      <?php echo $this->session->flashdata('sukses'); ?>
-    </div>
-<?php }else if($this->session->flashdata('gagal')) {
- ?>
-  <div class="alert alert-danger alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <i class="icon fas fa-check"></i> 
-      <?php echo $this->session->flashdata('gagal'); ?>
-    </div>
-<?php }else if($this->session->flashdata('hapus')) {
-  ?>
-   <div class="alert alert-danger alert-dismissible">
-       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-       <i class="icon fas fa-check"></i> 
-       <?php echo $this->session->flashdata('hapus'); ?>
-     </div>
- <?php }else if($this->session->flashdata('add')) {
-  ?>
-   <div class="alert alert-light alert-dismissible">
-       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-       <i class="icon fas fa-check"></i> 
-       <?php echo $this->session->flashdata('add'); ?>
-     </div>
- <?php
-}
-?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php if( empty($pengaturan) ){ ?>
   <div class="form-group row">
@@ -86,11 +54,20 @@ if($this->session->flashdata('sukses')) {
 <?php }?>
 
 <div class="form-group row">
-  <label for="goal" class="col-sm-3 text-right">Deskripsi Goal/Fitur</label>
-  <div class="col-sm-9">
-    <input type="text" name="goal_desc" class="form-control" placeholder="goal description" value="<?php echo set_value('goal_desc') ?>" required>
-  </div>
-</div>
+    <label for="p_goal_id" class="col-sm-3 text-right">Pilih Goal Induk</label>
+    <div class="col-sm-9">
+    <select name="goal_id" class="form-control select2" >
+      <option value="pilihan">Pilih Goal Induk...</option>
+      <!-- Ambil data goal dari Controller -->
+      <?php  foreach ($goal as $goal) {  ?>
+        <option value="<?php echo $goal->goal_id ?>">
+            <?php echo $goal->goal_id ?> - <?php echo $goal->goal_desc ?>
+        </option> 
+      <?php } ?>
+      }
+    </select>
+    </div>
+  </div> 
 
 <div class="form-group row">
   <label for="goal" class="col-sm-3 text-right">Tipe Goal/Fitur</label>
@@ -104,10 +81,10 @@ if($this->session->flashdata('sukses')) {
 
 
 <div class="form-group row">
-  <label for="goal" class="col-sm-3 text-right">Sub Goal</label>
+  <label for="goal" class="col-sm-3 text-right">Deskripsi Goal/Fitur</label>
   <div class="col-sm-9">
     <div class="input-group-append mb-2">
-        <input style="width:100%" type="text" name="subgoal[]" placeholder="Sub Goal/Fitur Description" required  >
+        <input style="width:100%" type="text" name="goal_desc" placeholder="Deskripsi Goal/Fitur" required  >
         <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-1">Tambah +</button>
     </div>
     <div class="container1">
