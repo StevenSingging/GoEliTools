@@ -253,55 +253,38 @@ class Goal extends CI_Controller {
 			$stkid = $inp->post('stakeholder_id');
 			$projid = explode(" - ", $prid);
 			$stakeid = explode(" - ", $stkid);
+			
+			$sub = $inp->post('subgoal[]');
 			if($inp->post('goal_id')!="pilihan"){
-				$sub = $inp->post('subgoal[]');
-				$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
-								'project_id'	=> $projid[0],
-								'stakeholder_id'=> $stakeid[0],
-								'goal_desc'		=> $inp->post('goal_desc'),
-								'parent_goal_id'=> $inp->post('goal_id'),
-								'goal_type'		=> $inp->post('goal_type'),
-								'post_date'		=> date('Y-m-d H:i:s')
-							);
-							$this->goal_model->tambah($data);
-				foreach( $sub as $s ){
-					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
-								'project_id'	=> $projid[0],
-								'stakeholder_id'=> $stakeid[0],
-								'goal_desc'		=> $s,
-								'parent_goal_id'=> $inp->post('goal_id'),
-								'goal_type'		=> $inp->post('goal_type'),
-								'post_date'		=> date('Y-m-d H:i:s')
-							);
-							//print_r($data);
-					$this->goal_model->tambah($data);
-				}
+				$pgid = $inp->post('goal_id');
 			}else{
-				$data = array('id_user'=> $this->session->userdata('id_user'),
-					'project_id'	=> $projid[0],
-					'stakeholder_id'=> $stakeid[0],
-					'parent_goal_id'=> 0,
-					'goal_desc'		=> $inp->post('goal_desc'),
-					'goal_type'		=> $inp->post('goal_type'),
-					'post_date'		=> date('Y-m-d H:i:s')
-				);
-				$this->goal_model->tambah($data);
-				//print_r($data);
-				$pgid = $this->goal_model->getId();
-				$sub = $inp->post('subgoal[]');
-				foreach( $sub as $s ){
-					$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+				$pgid = 0;
+			}
+			$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
 								'project_id'	=> $projid[0],
 								'stakeholder_id'=> $stakeid[0],
-								'goal_desc'		=> $s,
 								'parent_goal_id'=> $pgid,
+								'goal_desc'		=> $inp->post('goal_desc'),
 								'goal_type'		=> $inp->post('goal_type'),
 								'post_date'		=> date('Y-m-d H:i:s')
 							);
-					//print_r($data);
-					$this->goal_model->tambah($data);
-				}
-				
+			$this->goal_model->tambah($data);
+			if($inp->post('goal_id')!="pilihan"){
+				$subid = $inp->post('goal_id');
+			}else{
+				$subid = $this->goal_model->getId();
+			}
+			foreach( $sub as $s ){
+				$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
+							'project_id'	=> $projid[0],
+							'stakeholder_id'=> $stakeid[0],
+							'goal_desc'		=> $s,
+							'parent_goal_id'=> $subid,
+							'goal_type'		=> $inp->post('goal_type'),
+							'post_date'		=> date('Y-m-d H:i:s')
+						);
+				//print_r($data);
+				$this->goal_model->tambah($data);
 			}
 			//$this->goal_model->tambah($data);
 			
