@@ -42,14 +42,6 @@ class Procedure_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function listProc()
-	{
-		$this->db->select('activities_id');
-		$this->db->from('procedure');
-		$this->db->order_by('procedure_id', 'desc');
-		$query = $this->db->get();
-		return $query->result();
-	}
 
 	// daftar_procedure_project
 	public function activities($activities_id)

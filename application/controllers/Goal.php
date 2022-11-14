@@ -227,6 +227,8 @@ class Goal extends CI_Controller {
 		//validasi
 		$this->form_validation->set_rules('project_id', 'Project', 'required',
 			array( 'required' => '%s harus dipilih'));
+
+		//$this->form_validation->set_rules('goal_desc', 'Goal Description', 'required|trim|is_unique[goal.goal_desc]');
 		
 		$this->form_validation->set_rules('stakeholder_id', 'Stakeholder', 'required',
 			array( 'required' => '%s harus dipilih'));

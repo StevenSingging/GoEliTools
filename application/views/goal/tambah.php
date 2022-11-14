@@ -118,7 +118,7 @@
           e.preventDefault();
           if (x < max_fields) {
               x++;
-              $(wrapper).append('<div class="input-group-append mb-2"><input style="width:100%" type="text" name="subgoal[]" placeholder="Sub Goal/Fitur Description"><button style="width:100px" class="delete btn btn-danger btn-sm ml-1">Hapus</button></div>'); //add input box
+              $(wrapper).append('<div class="input-group-append mb-2"><input style="width:100%" type="text" name="subgoal[]" placeholder="Deskripsi Goal/Fitur" required><button style="width:100px" class="delete btn btn-danger btn-sm ml-1">Hapus</button></div>'); //add input box
           } else {
               alert('You Reached the limits')
           }

@@ -42,12 +42,12 @@ class Activities_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-
+	
 	public function listParent()
 	{
 		$this->db->select('parent_activities_id');
 		$this->db->from('activities');
-		$this->db->order_by('activities_id', 'desc');
+		$this->db->order_by('activities_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -55,11 +55,18 @@ class Activities_model extends CI_Model {
 	{
 		$this->db->select('activities_id');
 		$this->db->from('activities_resources');
-		$this->db->order_by('activities_id', 'desc');
+		$this->db->order_by('activities_id');
 		$query = $this->db->get();
 		return $query->result();
 	}
-
+	public function listProc()
+	{
+		$this->db->select('activities_id');
+		$this->db->from('procedure');
+		$this->db->order_by('activities_id');
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 	// daftar_activities_project
 	public function project($project_id)

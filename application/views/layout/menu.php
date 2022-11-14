@@ -40,31 +40,12 @@
             </a>
           </li>
 
-          <!-- Menu Stakeholder  -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-cog"></i>
-              <p>
-                DATA STAKEHOLDER
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo site_url('stakeholder')?>" class="nav-link">
-                  <i class="fas fa-table nav-icon"></i>
-                  <p>Data Stakeholder</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
           <!-- Menu Project  -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-project-diagram"></i>
               <p>
-                DATA PROYEK AA
+                DATA PROYEK
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -112,7 +93,7 @@
             <a href="#" class="nav-link">
              <i class="nav-icon fas fa-bullseye"></i>
               <p>
-                GOAL DAN FITUR SISTEM
+                GOAL & FITUR SISTEM
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -139,7 +120,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-folder"></i>
               <p>
-                DATA AKTIFITAS GOAL
+                DATA AKTIFITAS
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

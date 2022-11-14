@@ -10,19 +10,16 @@
             <div class="modal-body">
           
               <div class="form-group row">
-                  <label for="project_name" class="col-sm-3 col-form-label">Project Name</label>
+                  <label for="project_name" class="col-sm-3 col-form-label">Nama Proyek</label>
                   <div class="col-sm-9">
-                    <input type="text" name="project_name[]" id="project_name1" alt="1" class="form-control" placeholder="Project Name" value="<?php echo set_value('project_name[]') ?>" required>
+                    <input type="text" name="project_name[]" id="project_name1" alt="1" class="form-control" placeholder="Nama Proyek" value="<?php echo set_value('project_name[]') ?>" required>
                   </div>
               </div>
-
-
               <div class="form-group row">
-                  <label for="project_desc" class="col-sm-3 col-form-label">Project Description</label>
+                  <label for="project_desc" class="col-sm-3 col-form-label mb-3">Deskripsi Proyek</label>
                   <div class="col-sm-9">
-                    <input type="text" name="project_desc[]" id="project_desc1" alt="1" class="form-control" placeholder="Project Description"  value="<?php echo set_value('project_desc[]') ?>"  required>
+                    <input type="text" name="project_desc[]" id="project_desc1" alt="1" class="form-control" placeholder="Deskripsi Proyek"  value="<?php echo set_value('project_desc[]') ?>"  required>
                   </div>
-                  
               </div>
 
               <div class="ln_solid"></div>
@@ -56,22 +53,23 @@
                 $(".tambah-form").on('click', function(){        
                     row ='<div class="rec-element">'+
                             '<div class="form-group row">'+
-                              '<label for="project_name" class="col-sm-3 col-form-label">Project Name '+i+''+
+                              '<label for="project_name" class="col-sm-3 col-form-label">Nama Proyek '+i+''+
                               '</label>'+
-                                  '<div class="col-sm-9 mb-3">'+
-                                      '<input type="text" name="project_name[]" id="project_name'+i+'" alt="'+i+'" class="form-control" placeholder="Project Name" required'+
+                                  '<div class="col-sm-9 ">'+
+                                      '<input type="text" name="project_name[]" id="project_name'+i+'" alt="'+i+'" class="form-control" placeholder="Nama Proyek" required>'+
                                   '</div>'+
-                            '</div>'+  
-
-                              '<label for="project_name" class="col-sm-3 col-form-label">Project Description '+i+''+
+                            '</div>'+
+                            '<div class="form-group row">'+
+                              '<label for="project_desc" class="col-sm-3 col-form-label">Deskripsi Proyek '+i+''+
                               '</label>'+
-                                  '<div class="col-sm-9">'+
-                                      '<input type="text" name="project_desc[]" id="project_desc'+i+'" alt="'+i+'" class="form-control" placeholder="Project Description" required'+
+                                  '<div class="col-sm-9 mb-1">'+
+                                      '<input type="text" name="project_desc[]" id="project_name'+i+'" alt="'+i+'" class="form-control" placeholder="Deskripsi Proyek" required>'+
                                   '</div>'+
+                            '</div>'+
                                   '<span class="input-group-btn">'+
                                     '<button type="button" class="btn btn-danger del-element mt-2"><i class="fas fa-trash-alt"></i> Hapus</button>'+
                                   '</span>'+
-                            '<div class="ln_solid"></div>'+
+                            '<div class="ln_solid mb-3"></div>'+
                             '</div>';
 
                           

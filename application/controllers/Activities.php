@@ -221,28 +221,62 @@ class Activities extends CI_Controller {
 	// Hapus
 	public function delete($activities_id)
 	{
+		$data = array('activities_id' => $activities_id);
 		$listParent = $this->activities_model->listParent();
 		$listActres = $this->activities_model->listActres();
-		$listActres = $this->procedure_model->listActres();
-
-		$data = array('activities_id' => $activities_id);
-		
-		foreach($listParent as $lp => $value ){
-			foreach($listActres as $la => $hasil){
-				$hsl = json_decode(json_encode($hasil), true);
-				$val = json_decode(json_encode($value), true);
-				if($data['activities_id']==$val['parent_activities_id'] OR $data['activities_id']==$hsl['activities_id'] ){
-					$this->session->set_flashdata('alert', 'Data Masih Digunakan');
-					return redirect(site_url('activities'), 'refresh');
-				}else{
-					//proses hapus
-					$this->goal_model ->delete($data);
-					//notifikasi dan redirect
-					$this->session->set_flashdata('danger', 'Data telah dihapus');
-					redirect(site_url('activities'),'refresh');
-				}
-			}
+		$listProc = $this->activities_model->listProc();
+		$arrayPar = array();
+		$arrayAct = array();
+		$arrayProc = array();
+		foreach($listParent as $lp => $value){
+			$val = json_decode(json_encode($value), true);
+			array_push($arrayPar, $val['parent_activities_id']);
 		}
+		foreach($listActres as $la => $hasil){
+			$hsl = json_decode(json_encode($hasil), true);
+			array_push($arrayAct, $hsl['activities_id']);
+		}
+		foreach($listProc as $lpro => $lpr){
+			$lprc = json_decode(json_encode($lpr), true);
+			array_push($arrayProc, $lprc['activities_id']);
+		}
+		if(in_array($data['activities_id'], $arrayPar) OR in_array($data['activities_id'], $arrayAct) OR in_array($data['activities_id'], $arrayProc)){
+			echo " Tidak di hapus";
+		}else{
+			echo $data['activities_id'] . " data id hapus ";
+		}
+		
+		
+		// if($parent[0]['activities_id'] == $val['parent_activities_id'] OR $data['activities_id'] == $actres[0]['activities_id']){
+		// 	$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+		// 	return redirect(site_url('activities'), 'refresh');
+		// 	//print($parent[0]['activities_id'] . " = " . $val['parent_activities_id']);
+		// }else{
+		// 	//proses hapus
+		// 	$this->activities_model ->delete($data);
+		// 	//notifikasi dan redirect
+		// 	$this->session->set_flashdata('hapus', 'Data telah dihapus');
+		// 	redirect(site_url('activities'),'refresh');
+		// 		//echo "hapus <br>";
+		// }
+		$this->load->view('activities/coba');
+		// foreach($listParent as $lp => $value ){
+		// 	foreach($listActres as $la => $hasil){
+		// 		$hsl = json_decode(json_encode($hasil), true);
+		// 		$val = json_decode(json_encode($value), true);
+		// 		if($data['activities_id']==$val['parent_activities_id'] OR $data['activities_id']==$hsl['activities_id'] ){
+		// 			$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+		// 			return redirect(site_url('activities'), 'refresh');
+		// 		}else{
+		// 			//proses hapus
+		// 			$this->goal_model ->delete($data);
+		// 			//notifikasi dan redirect
+		// 			$this->session->set_flashdata('hapus', 'Data telah dihapus');
+		// 			redirect(site_url('activities'),'refresh');
+		// 		}
+		// 	}
+		// }
+		//$this->load->view('goal/coba');
 	}
 
 

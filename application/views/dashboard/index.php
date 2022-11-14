@@ -116,9 +116,9 @@
 
     <p class="btn btn-group btn-block">
       <a href="<?php echo site_url('activities') ?>" class="btn btn-success">
-        <i class="fa fa-folder"></i> Data Aktivitas
+        <i class="fa fa-folder"></i> Data Aktifitas
       <a href="<?php echo site_url('activities/tambah') ?>" class="btn btn-info">
-        <i class="fa fa-plus"></i> Tambah Aktivitas Baru
+        <i class="fa fa-plus"></i> Tambah Aktifitas Baru
       </a>
     </p>
 
