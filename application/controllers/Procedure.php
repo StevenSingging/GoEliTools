@@ -220,11 +220,18 @@ class Procedure extends CI_Controller {
 	public function delete($procedure_id)
 	{
 		$data = array('procedure_id' => $procedure_id);
-		//proses hapus
-		$this->procedure_model ->delete($data);
-		//notifikasi dan redirect
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
-		redirect(site_url('procedure'),'refresh');
+		$listProc = $this->procedure_model->listProc();
+		$arrayProc = array();
+		foreach($listProc as $lpro => $lpr){
+			$lprc = json_decode(json_encode($lpr), true);
+			array_push($arrayProc, $lprc['procedure_id']);
+		}
+		if(in_array($data['procedure_id'], $arrayProc)){
+			echo " Tidak di hapus";
+		}else{
+			echo $data['procedure_id'] . " data id hapus ";
+		}
+		$this->load->view('procedure/coba');
 	}
 
 
