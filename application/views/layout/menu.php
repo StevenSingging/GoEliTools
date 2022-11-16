@@ -26,23 +26,25 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <!-- Dashboar Page -->
           <li class="nav-item">
-            <a href="<?php echo site_url('dashboard')?>" class="nav-link">
+            
+            <a href="<?php echo site_url('dashboard')?>" class="nav-link <?php if($this->uri->segment(1) == 'dashboard' ){echo 'active';}?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 DASHBOARD
                 <span class="right badge badge-danger">Baru</span>
               </p>
             </a>
+
           </li>
 
           <!-- Menu Project  -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'project' ){echo 'menu-open';}?>">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-project-diagram"></i>
               <p>
                 DATA PROYEK
@@ -51,17 +53,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('project')?>" class="nav-link">
+    
+                <a href="<?php echo site_url('project')?>" class="nav-link <?php if($this->uri->segment(1) == 'project' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Proyek</p>
                 </a>
+                
               </li>
+
             </ul>
           </li>
 
           <!-- Menu Stakeholder  -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'stakeholder' ){echo 'menu-open';}?>">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 DATA STAKEHOLDER
@@ -70,7 +75,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('stakeholder')?>" class="nav-link">
+                <a href="<?php echo site_url('stakeholder')?>" class="nav-link <?php if($this->uri->segment(1) == 'stakeholder' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Stakeholder</p>
                 </a>
@@ -79,7 +84,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo site_url('pengaturan')?>" class="nav-link">
+            <a href="<?php echo site_url('pengaturan')?>" class="nav-link <?php if($this->uri->segment(1) == 'pengaturan' ){echo 'active';}?>">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 PENGATURAN
@@ -89,8 +94,8 @@
           </li>
 
           <!-- Menu Project Goal  -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'goal' ){echo 'menu-open';}?>">
+            <a href="#" class="nav-link ">
              <i class="nav-icon fas fa-bullseye"></i>
               <p>
                 GOAL & FITUR SISTEM
@@ -99,14 +104,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('goal')?>" class="nav-link">
+                <a href="<?php echo site_url('goal')?>" class="nav-link <?php if($this->uri->segment(1) == 'goal' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Goal</p>
                 </a>
               </li>
 
                <li class="nav-item">
-                  <a href="<?php echo site_url('goal')?>" class="nav-link">
+                  <a href="<?php echo site_url('goal')?>" class="nav-link <?php if($this->uri->segment(1) == 'goal' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Fitur Goal</p>
                 </a>
@@ -116,7 +121,7 @@
           </li>
 
           <!-- Menu GOAL ACTIVITIES  -->
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'activities' || $this->uri->segment(1) == 'activities_resources')  {echo 'menu-open';}?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-folder"></i>
               <p>
@@ -126,14 +131,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('activities')?>" class="nav-link">
+                <a href="<?php echo site_url('activities')?>" class="nav-link <?php if($this->uri->segment(1) == 'activities' ){echo 'active';}?> ">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Aktifitas</p>
                 </a>
               </li>
 
                <li class="nav-item">
-                  <a href="<?php echo site_url('activities_resources') ?>" class="nav-link">
+                  <a href="<?php echo site_url('activities_resources') ?>" class="nav-link <?php if($this->uri->segment(1) == 'activities_resources' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Sumber Daya Aktifitas</p>
                 </a>
@@ -161,7 +166,7 @@
 
 
            <!-- Menu Procedure Activities  -->
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'procedure' || $this->uri->segment(1) == 'procedure_detail')  {echo 'menu-open';}?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tasks"></i>
               <p>
@@ -171,14 +176,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('procedure')?>" class="nav-link">
+                <a href="<?php echo site_url('procedure')?>" class="nav-link <?php if($this->uri->segment(1) == 'procedure' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Prosedur Aktifitas</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                  <a href="<?php echo site_url('procedure_detail')?>" class="nav-link">
+                  <a href="<?php echo site_url('procedure_detail')?>" class="nav-link <?php if($this->uri->segment(1) == 'procedure_detail' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Detail Prosedur</p>
                 </a>
@@ -204,7 +209,7 @@
           </li>
 
           <!-- Menu Project Stakeholder  -->
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'project_stakeholder' )  {echo 'menu-open';}?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-tie"></i>
               <p>
@@ -214,7 +219,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('project_stakeholder')?>" class="nav-link">
+                <a href="<?php echo site_url('project_stakeholder')?>" class="nav-link <?php if($this->uri->segment(1) == 'project_stakeholder' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Proyek Stakeholder</p>
                 </a>
@@ -224,7 +229,7 @@
 
           <?php if($this->session->userdata('akses_level')=="Admin") { ?>
            <!-- Data User menu -->
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'user' ){echo 'menu-open';}?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-lock"></i>
               <p>
@@ -234,7 +239,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('user')?>" class="nav-link">
+                <a href="<?php echo site_url('user')?>" class="nav-link <?php if($this->uri->segment(1) == 'user' ){echo 'active';}?>"" >
                   <i class="fas fa-users nav-icon"></i>
                   <p>Data Administrator Sistem</p>
                 </a>
@@ -245,7 +250,7 @@
           <?php } ?>
           <!-- Panduan Sistem -->
               <li class="nav-item">
-                <a href="<?php echo site_url('panduan')?>" class="nav-link">
+                <a href="<?php echo site_url('panduan')?>" class="nav-link <?php if($this->uri->segment(1) == 'panduan' ){echo 'active';}?>"">
                   <i class="nav-icon fas fa-book"></i>
                   <p>
                     BUKU PANDUAN
@@ -254,7 +259,7 @@
               </li>
             <!-- Laporan -->
             <li class="nav-item">
-                <a href="<?php echo site_url('laporan'); unset($_SESSION['sukses']);?>" class="nav-link">
+                <a href="<?php echo site_url('laporan'); unset($_SESSION['sukses']);?>" class="nav-link <?php if($this->uri->segment(1) == 'laporan' ){echo 'active';}?>">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     LAPORAN
@@ -263,7 +268,7 @@
               </li>
           <!-- Logout -->
               <li class="nav-item">
-            <a href="<?php echo site_url('login/logout')?>" class="nav-link">
+            <a href="<?php echo site_url('login/logout')?>" class="nav-link ">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Keluar
@@ -348,3 +353,4 @@
             <?php echo validation_errors('<div class="alert alert-warning alert-dismissible">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <i class="icon fas fa-check"></i>','</div>') ?>
+
