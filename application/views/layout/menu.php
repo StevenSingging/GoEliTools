@@ -94,7 +94,7 @@
           </li>
 
           <!-- Menu Project Goal  -->
-          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'goal' ){echo 'menu-open';}?>">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'goal' || $this->uri->segment(1) == 'goal_fitur){echo 'menu-open';}?>">
             <a href="#" class="nav-link ">
              <i class="nav-icon fas fa-bullseye"></i>
               <p>
