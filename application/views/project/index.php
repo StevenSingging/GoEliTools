@@ -31,7 +31,8 @@ echo form_close();
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($project as $key => $project) { ?> 
+		<?php if($project1){ ?>
+		<?php foreach ($project1 as $key => $project) { ?> 
 
 		<tr>
 			<td><?php echo $key+1; ?></td>
@@ -60,7 +61,7 @@ echo form_close();
 			</td>
 
 		</tr>
-
+	<?php } ?>
 		<?php } ?>
 
 	</tbody>
