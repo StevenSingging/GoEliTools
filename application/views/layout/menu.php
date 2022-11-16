@@ -111,7 +111,7 @@
               </li>
 
                <li class="nav-item">
-                  <a href="<?php echo site_url('goal')?>" class="nav-link <?php if($this->uri->segment(1) == 'goal' ){echo 'active';}?>">
+                  <a href="<?php echo site_url('goal')?>" class="nav-link <?php if($this->uri->segment(1) == 'goal_fitur' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Fitur Goal</p>
                 </a>
