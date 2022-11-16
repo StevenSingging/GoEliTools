@@ -29,7 +29,7 @@ if($this->session->flashdata('alert')){
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($goal as $key => $goal) { ?> 
+		<?php foreach ($goal1 as $key => $goal) { ?> 
 
 		<tr>
 			<td><?php echo $key+1; ?></td>
