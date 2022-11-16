@@ -53,7 +53,10 @@
   
 <?php }?>
 
-<div class="form-group row">
+<?php if( empty($goal) ){ ?>
+
+<?php }else {?>
+    <div class="form-group row">
     <label for="p_goal_id" class="col-sm-3 text-right">Pilih Goal Induk</label>
     <div class="col-sm-9">
     <select name="goal_id" class="form-control select2" >
@@ -68,6 +71,7 @@
     </select>
     </div>
   </div> 
+<?php }?>
 
 <div class="form-group row">
   <label for="goal" class="col-sm-3 text-right">Tipe Goal/Fitur</label>
