@@ -70,6 +70,19 @@ class Project_model extends CI_Model {
 	{
 		$this->db->insert('project', $data);
 	}
+	
+	public function detail2($id)
+	{
+		$this->db->select('*');
+		$this->db->from('project');
+		// where
+		$this->db->where('project.id_user', $id);
+		// join
+
+		$this->db->order_by('project_id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 	
 
