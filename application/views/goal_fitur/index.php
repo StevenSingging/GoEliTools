@@ -29,8 +29,11 @@ if($this->session->flashdata('alert')){
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($goal as $key => $goal) { ?> 
+		
+		<?php if($goal1) {?> 
 
+		<?php foreach ($goal1 as $key => $goal) { ?> 
+		
 		<tr>
 			<td><?php echo $key+1; ?></td>
 			<td><a href="<?php echo site_url('goal/project/'.$goal->project_id) ?>">
@@ -66,8 +69,8 @@ if($this->session->flashdata('alert')){
 			</td>
 
 		</tr>
-
 		<?php } ?>
+	<?php } ?>
 
 	</tbody>
 </table>
