@@ -19,12 +19,15 @@ class Goal extends CI_Controller {
 	// Halaman Utama
 	public function index()
 	{
-		$goal = $this->goal_model->listing();
+		$user_id = $this->session->userdata('id_user');
+		$goal1 = $this->goal_model->detail2($user_id);	
 		$total = $this->goal_model->total();
+		$goal = $this->goal_model->listing();
 		$listParent = $this->goal_model->listParent();
 
 		$data = array( 'title' => 'Data Goal  ('.$total->total.')',
 						'goal' => $goal,
+						'goal1' => $goal1,
 						'plist' => $listParent,
 						'content' => 'goal/index'
 					 );
