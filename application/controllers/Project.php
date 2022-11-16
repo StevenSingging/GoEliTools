@@ -15,6 +15,8 @@ class Project extends CI_Controller {
 	{
 		$project = $this->project_model->listing();
 		$total = $this->project_model->total();
+		$user_id = $this->session->userdata('id_user');
+		$project1 = $this->project_model->detail2($user_id);
 
 		// validasi input
 		$valid = $this->form_validation;
@@ -28,6 +30,7 @@ class Project extends CI_Controller {
 
 		$data = array( 'title' => 'Data Proyek ('.$total->total.')',
 						'project' => $project,
+						'project1' => $project1,
 						'content' => 'project/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);
@@ -60,6 +63,7 @@ class Project extends CI_Controller {
 		//end masuk database
 		
 	}
+
 
 
 	// Edit Project
