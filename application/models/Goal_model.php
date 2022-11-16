@@ -225,6 +225,28 @@ class Goal_model extends CI_Model {
 		$result = $this->db->select('goal_id')->from('goal')->limit(1)->order_by('goal.goal_id', 'desc')->get()->row();
 		return $result->goal_id;
 	}
+	
+	public function detail2($id)
+	{
+		$this->db->select('goal.*, 
+				users.nama_user,
+				users.username,
+				project.project_name,
+				project.project_id,
+				stakeholder.stakeholder_name,
+				stakeholder.stakeholder_id');
+		$this->db->from('goal');
+		// where
+		$this->db->where('goal.id_user', $id);
+		// join
+		$this->db->join('users', 'users.id_user = goal.id_user', 'left');
+		$this->db->join('project', 'project.project_id = goal.project_id', 'left');
+		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = goal.stakeholder_id', 'left');
+
+		$this->db->order_by('goal_id', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 
 }
