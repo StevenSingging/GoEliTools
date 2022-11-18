@@ -5,8 +5,8 @@ class Panduan extends CI_Controller {
 
 	public function index()
 	{
-		if(isset($_SESSION['sukses'])){
-			unset($_SESSION['sukses']);
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
 		}else if(isset($_SESSION['add'])){
 			unset($_SESSION['add']);
 		}else if(isset($_SESSION['hapus'])){
@@ -16,6 +16,7 @@ class Panduan extends CI_Controller {
 		}else if(isset($_SESSION['warning'])){
 			unset($_SESSION['warning']);
 		}
+		
 		$data = array( 'title'	=>'Panduan Penggunaan Sistem Informasi',
 						'content'	=>'panduan/index'
 						);

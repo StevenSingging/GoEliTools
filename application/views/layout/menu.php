@@ -94,7 +94,7 @@
           </li>
 
           <!-- Menu Project Goal  -->
-          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'goal' || $this->uri->segment(1) == 'goal_fitur){echo 'menu-open';}?>">
+          <li class="nav-item has-treeview <?php if($this->uri->segment(1) == 'goal' || $this->uri->segment(1) == 'goal_fitur' ){echo 'menu-open';}?>">
             <a href="#" class="nav-link ">
              <i class="nav-icon fas fa-bullseye"></i>
               <p>
@@ -111,7 +111,7 @@
               </li>
 
                <li class="nav-item">
-                  <a href="<?php echo site_url('goal')?>" class="nav-link <?php if($this->uri->segment(1) == 'goal_fitur' ){echo 'active';}?>">
+                  <a href="<?php echo site_url('goal_fitur')?>" class="nav-link <?php if($this->uri->segment(1) == 'goal_fitur' ){echo 'active';}?>">
                   <i class="fas fa-table nav-icon"></i>
                   <p>Data Fitur Goal</p>
                 </a>
@@ -317,12 +317,12 @@
             <div class="card-body">
 
             <?php
-            if($this->session->flashdata('sukses')) {
+            if($this->session->flashdata('berhasil')) {
              ?>
               <div class="alert alert-success alert-dismissible">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <i class="icon fas fa-check"></i> 
-                  <?php echo $this->session->flashdata('sukses'); ?>
+                  <?php echo $this->session->flashdata('berhasil'); ?>
                 </div>
             <?php }else if($this->session->flashdata('gagal')) {
              ?>

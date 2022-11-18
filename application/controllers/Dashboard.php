@@ -41,8 +41,8 @@ class Dashboard extends CI_Controller {
 		$procedure		= $this->procedure_model->total();
 		$procdet		= $this->procedure_detail_model->total();
 
-		if(isset($_SESSION['sukses'])){
-			unset($_SESSION['sukses']);
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
 		}else if(isset($_SESSION['add'])){
 			unset($_SESSION['add']);
 		}else if(isset($_SESSION['hapus'])){

@@ -29,7 +29,7 @@ class Activities_model extends CI_Model {
 		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = activities.stakeholder_id', 'left');
 		$this->db->join('goal', 'goal.goal_id = activities.goal_id', 'left');
 		//end join
-		$this->db->order_by('activities_id', 'desc');
+		$this->db->order_by('activities_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -38,7 +38,7 @@ class Activities_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('activities');
-		$this->db->order_by('activities_id', 'desc');
+		$this->db->order_by('activities_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}

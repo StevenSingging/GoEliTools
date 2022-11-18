@@ -24,6 +24,18 @@ class Procedure extends CI_Controller {
 		$procedure = $this->procedure_model->listing();
 		$total = $this->procedure_model->total();
 
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
+		}else if(isset($_SESSION['add'])){
+			unset($_SESSION['add']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
+
 		$data = array( 'title' => 'Data Prosedur  ('.$total->total.')',
 						'procedure' => $procedure,
 						'content' => 'procedure/index'
@@ -140,7 +152,7 @@ class Procedure extends CI_Controller {
 						'procedure_desc'	=> $ps,
 						'activities_id'		=> $inp->post('activities_id'),
 						'actor'				=> $inp->post('actor'),
-						'resources'			=> $inp->post('resources'),
+						'resources'			=> $inp->post('procedure_resources'),
 						'post_date'			=> date('Y-m-d H:i:s')
 				);
 				// Proses oleh model
@@ -148,7 +160,7 @@ class Procedure extends CI_Controller {
 			}
 
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah ditambah');
+			$this->session->set_flashdata('add', 'Data telah ditambah');
 			redirect(site_url('procedure/tambah'),'refresh');
 		}
 		// end masuk database
@@ -209,7 +221,7 @@ class Procedure extends CI_Controller {
 			// Proses oleh model
 			$this->procedure_model->edit($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah diedit');
+			$this->session->set_flashdata('berhasil', 'Data telah diedit');
 			redirect(site_url('procedure'),'refresh');
 
 		}
@@ -227,11 +239,15 @@ class Procedure extends CI_Controller {
 			array_push($arrayProc, $lprc['procedure_id']);
 		}
 		if(in_array($data['procedure_id'], $arrayProc)){
-			echo " Tidak di hapus";
+			$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+			return redirect(site_url('procedure'), 'refresh');
 		}else{
-			echo $data['procedure_id'] . " data id hapus ";
+			$this->procedure_model ->delete($data);
+			//notifikasi dan redirect
+			$this->session->set_flashdata('hapus', 'Data telah dihapus');
+			redirect(site_url('procedure'),'refresh');
 		}
-		$this->load->view('procedure/coba');
+		//$this->load->view('procedure/coba');
 	}
 
 

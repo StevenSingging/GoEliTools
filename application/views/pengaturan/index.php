@@ -54,8 +54,8 @@ echo form_open(site_url('pengaturan'));
 	<thead>
 		<tr>
 			<th width = "5%">NO</th>
-			<th width = "30%">PROJECT</th>
-			<th width = "30%">STAKEHOLDER</th>
+			<th width = "60%">PROJECT</th>
+			<th width = "25%">STAKEHOLDER</th>
 			<th>ACTION</th>
 		</tr>
 	</thead>
@@ -66,8 +66,8 @@ echo form_open(site_url('pengaturan'));
 			<td><?php echo $key+1; ?></td>
       <td><?php echo $pengaturan1->project_name ?></td>
 			<td><?php echo $pengaturan1->stakeholder_name ?></td>
-      <td>
-      <a href="<?php echo site_url('pengaturan/delete/'.$pengaturan1->id_user) ?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin menghapus data ini?')">
+      <td class="text-center">
+      <a href="<?php echo site_url('pengaturan/delete/'.$pengaturan1->id_user) ?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin menghapus data ini?')" title="Hapus">
 						<i class="fa fa-trash"></i> Hapus
 					</a>
       </td>

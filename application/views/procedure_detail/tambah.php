@@ -59,10 +59,10 @@
     <input type="text" name="resources[]" class="form-control" placeholder="Sumber Daya" value="<?php echo set_value('resources') ?>" >
   </div>
 </div>
-  <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-auto mr-2">Tambah +</button>
+  
 <div class="container1 mt-2">
-
 </div>
+<button style="width:100px" class="add_form_field btn btn-success btn-sm ml-auto mt-3">Tambah +</button>
 </div>
 
 <div class="form-group row">
@@ -92,7 +92,7 @@
           e.preventDefault();
           if (x < max_fields) {
               x++;
-              $(wrapper).append('<div class="text-right"><div class="form-group row"><label for="form1" class="col-sm-5 text-right">Detail Prosedur '+x+'</label></div><div class="form-group row"><label for="procedure_detail_desc" class="col-sm-3 text-right">Deskripsi Detail Prosedur</label><div class="col-sm-9"><input type="text" name="procedure_detail_desc[]" class="form-control" placeholder="Deskripsi Detail Prosedur" required></div></div><div class="form-group row"><label for="pre_condition" class="col-sm-3 text-right">Kondisi Awal Prosedur</label><div class="col-sm-9"><input type="text" name="pre_condition[]" class="form-control" placeholder="Kondisi Awal Prosedur" required></div></div><div class="form-group row"><label for="post_condition[]" class="col-sm-3 text-right">Kondisi Pasca Prosedur</label><div class="col-sm-9"><input type="text" name="post_condition[]" class="form-control" placeholder="Kondisi Pasca Prosedur" required></div></div><div class="form-group row"><label for="resources" class="col-sm-3 text-right">Sumber Daya</label><div class="col-sm-9"><input type="text" name="resources[]" class="form-control" placeholder="Sumber Daya"</div></div></div><button style="width:100px" class="delete btn btn-danger btn-sm ml-auto mr-2">Hapus</button></div>'); 
+              $(wrapper).append('<div class="text-left"><hr size=6 noshade><label for="form1" class="col-sm-5 text-right">Detail Prosedur '+x+'</label><button style="width:100px;float:right" class="delete btn btn-danger btn-sm ml-auto">Hapus</button><div class="form-group row mt-3"><label for="procedure_detail_desc" class="col-sm-3 text-right">Deskripsi Detail Prosedur</label><div class="col-sm-9"><input type="text" name="procedure_detail_desc[]" class="form-control" placeholder="Deskripsi Detail Prosedur" required></div></div><div class="form-group row"><label for="pre_condition" class="col-sm-3 text-right">Kondisi Awal Prosedur</label><div class="col-sm-9"><input type="text" name="pre_condition[]" class="form-control" placeholder="Kondisi Awal Prosedur" required></div></div><div class="form-group row"><label for="post_condition[]" class="col-sm-3 text-right">Kondisi Pasca Prosedur</label><div class="col-sm-9"><input type="text" name="post_condition[]" class="form-control" placeholder="Kondisi Pasca Prosedur" required></div></div><div class="form-group row"><label for="resources" class="col-sm-3 text-right">Sumber Daya</label><div class="col-sm-9"><input type="text" name="resources[]" class="form-control" placeholder="Sumber Daya"</div></div></div></div>'); 
               //add input box
           } else {
               alert('You Reached the limits')

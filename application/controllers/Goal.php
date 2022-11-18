@@ -23,12 +23,22 @@ class Goal extends CI_Controller {
 		$goal1 = $this->goal_model->detail2($user_id);	
 		$total = $this->goal_model->total();
 		$goal = $this->goal_model->listing();
-		$listParent = $this->goal_model->listParent();
 
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
+		}else if(isset($_SESSION['add'])){
+			unset($_SESSION['add']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
+		
 		$data = array( 'title' => 'Data Goal  ('.$total->total.')',
 						'goal' => $goal,
 						'goal1' => $goal1,
-						'plist' => $listParent,
 						'content' => 'goal/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);
@@ -291,14 +301,9 @@ class Goal extends CI_Controller {
 				//print_r($data);
 				$this->goal_model->tambah($data);
 			}
-			//$this->goal_model->tambah($data);
-			
-			//$this->load->view('goal/tambah');
-			// Proses oleh model
-			
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah ditambah');
-			redirect(site_url('goal/tambah'),'refresh');
+			$this->session->set_flashdata('add', 'Data telah ditambah');
+			redirect(site_url('goal/tambah'));
 			//$this->load->view('goal/coba');
 		}
 		// end masuk database
@@ -352,7 +357,7 @@ class Goal extends CI_Controller {
 			// Proses oleh model
 			$this->goal_model->edit($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah diedit');
+			$this->session->set_flashdata('berhasil', 'Data telah diedit');
 			redirect(site_url('goal'),'refresh');
 
 		}

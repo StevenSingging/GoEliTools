@@ -66,7 +66,7 @@ class User extends CI_Controller {
 			// Proses oleh model
 			$this->user_model->tambah($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah ditambah');
+			$this->session->set_flashdata('add', 'Data telah ditambah');
 			redirect(site_url('user'),'refresh');
 		}
 		// end masuk database
@@ -121,7 +121,7 @@ class User extends CI_Controller {
 			// Proses oleh model
 			$this->user_model->edit($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah diedit');
+			$this->session->set_flashdata('berhasil', 'Data telah diedit');
 			redirect(site_url('user'),'refresh');
 		}
 		// end masuk database
@@ -134,7 +134,7 @@ class User extends CI_Controller {
 		//proses hapus
 		$this->user_model ->delete($data);
 		//notifikasi dan redirect
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		$this->session->set_flashdata('hapus', 'Data telah dihapus');
 		redirect(site_url('user'),'refresh');
 	}
 }

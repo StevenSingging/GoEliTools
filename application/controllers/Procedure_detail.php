@@ -24,6 +24,18 @@ class Procedure_detail extends CI_Controller {
 		$procedure_detail = $this->procedure_detail_model->listing();
 		$total = $this->procedure_detail_model->total();
 
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
+		}else if(isset($_SESSION['add'])){
+			unset($_SESSION['add']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
+
 		$data = array( 'title' => 'Data Detail Prosedur  ('.$total->total.')',
 						'procedure_detail' => $procedure_detail,
 						'content' => 'procedure_detail/index'
@@ -128,7 +140,7 @@ class Procedure_detail extends CI_Controller {
 			//$this->load->view('procedure_detail/coba');
 			
 			// notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah ditambah');
+			$this->session->set_flashdata('add', 'Data telah ditambah');
 			redirect(site_url('procedure_detail/tambah'),'refresh');
 		}
 		// end masuk database
@@ -170,7 +182,7 @@ class Procedure_detail extends CI_Controller {
 			// Proses oleh model
 			$this->procedure_detail_model->edit($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah diedit');
+			$this->session->set_flashdata('berhasil', 'Data telah diedit');
 			redirect(site_url('procedure_detail'),'refresh');
 
 		}
@@ -184,7 +196,7 @@ class Procedure_detail extends CI_Controller {
 		//proses hapus
 		$this->procedure_detail_model ->delete($data);
 		//notifikasi dan redirect
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		$this->session->set_flashdata('hapus', 'Data telah dihapus');
 		redirect(site_url('procedure_detail'),'refresh');
 	}
 

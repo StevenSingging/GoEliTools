@@ -23,6 +23,18 @@ class Activities extends CI_Controller {
 		$activities = $this->activities_model->listing();
 		$total = $this->activities_model->total();
 
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
+		}else if(isset($_SESSION['add'])){
+			unset($_SESSION['add']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
+		
 		$data = array( 'title' => 'Data Aktifitas  ('.$total->total.')',
 						'activities' => $activities,
 						'content' => 'activities/index'
@@ -152,7 +164,7 @@ class Activities extends CI_Controller {
 				$this->activities_model->tambah($data);
 			}
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah ditambah');
+			$this->session->set_flashdata('add', 'Data telah ditambah');
 			redirect(site_url('activities/tambah'),'refresh');
 		}
 		// end masuk database
@@ -211,7 +223,7 @@ class Activities extends CI_Controller {
 			// Proses oleh model
 			$this->activities_model->edit($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah diedit');
+			$this->session->set_flashdata('berhasil', 'Data telah diedit');
 			redirect(site_url('activities'),'refresh');
 
 		}
@@ -241,9 +253,14 @@ class Activities extends CI_Controller {
 			array_push($arrayProc, $lprc['activities_id']);
 		}
 		if(in_array($data['activities_id'], $arrayPar) OR in_array($data['activities_id'], $arrayAct) OR in_array($data['activities_id'], $arrayProc)){
-			echo " Tidak di hapus";
+			$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+			return redirect(site_url('activities'), 'refresh');
 		}else{
-			echo $data['activities_id'] . " data id hapus ";
+			//proses hapus
+			$this->activities_model ->delete($data);
+			//notifikasi dan redirect
+			$this->session->set_flashdata('hapus', 'Data telah dihapus');
+			redirect(site_url('activities'),'refresh');
 		}
 		
 		

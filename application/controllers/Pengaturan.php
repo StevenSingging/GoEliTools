@@ -19,6 +19,16 @@ class Pengaturan extends CI_Controller {
     $user_id = $this->session->userdata('id_user');
 	$pengaturan = $this->pengaturan_model->detail($user_id);
     $pengaturan1 = $this->pengaturan_model->listing($user_id);
+
+    if(isset($_SESSION['berhasil'])){
+        unset($_SESSION['berhasil']);
+    }else if(isset($_SESSION['hapus'])){
+        unset($_SESSION['hapus']);
+    }else if(isset($_SESSION['gagal'])){
+        unset($_SESSION['gagal']);
+    }else if(isset($_SESSION['warning'])){
+        unset($_SESSION['warning']);
+    }
     
     //validasi
 	$this->form_validation->set_rules('project_id', 'Project', 'required',

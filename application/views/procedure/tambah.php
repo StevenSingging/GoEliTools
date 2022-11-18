@@ -88,11 +88,10 @@
   <div class="col-sm-9">
     <div class="input-group-append mb-2">
           <input type="text" name="procedure_desc[]" class="form-control" placeholder="Deskripsi Prosedur" required>
-          <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-1">Tambah +</button>
     </div>
     <div class="container1">
-
     </div>
+    <button style="width:100px;float:right" type="button" class="add_form_field btn btn-success btn-sm mt-3" data-toggle="tooltip" data-placement="bottom" title="Tambah Form Deskripsi">Tambah +</button>
   </div>
 </div>
 

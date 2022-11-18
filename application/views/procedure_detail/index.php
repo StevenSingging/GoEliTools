@@ -28,21 +28,21 @@
 			</td>
 			<td><?php echo $procedure_detail->procedure_detail_no ?> </td>
 			<td><?php echo $procedure_detail->procedure_detail_desc ?> </td>
-			<td>
+			<td class="text-center">
 				<div class="btn_group">
-					<a href="<?php echo site_url('procedure_detail/detail/'.$procedure_detail->procedure_detail_id) ?>" class="btn btn-info btn-sm">
+					<a href="<?php echo site_url('procedure_detail/detail/'.$procedure_detail->procedure_detail_id) ?>" style="width:40px" class="btn btn-info btn-sm" title="Detail">
 						<i class="fa fa-laptop"></i> 
 					</a>
 					
-					<a href="<?php echo site_url('procedure_detail/cetak/'.$procedure_detail->procedure_detail_id) ?>" class="btn btn-success btn-sm" target="_blank">
+					<a href="<?php echo site_url('procedure_detail/cetak/'.$procedure_detail->procedure_detail_id) ?>" style="width:40px" class="btn btn-success btn-sm" target="_blank" title="Cetak">
 						<i class="fa fa-print"></i> 
 					</a>
 
-					<a href="<?php echo site_url('procedure_detail/edit/'.$procedure_detail->procedure_detail_id) ?>" class="btn btn-warning btn-sm">
+					<a href="<?php echo site_url('procedure_detail/edit/'.$procedure_detail->procedure_detail_id) ?>" style="width:40px" class="btn btn-warning btn-sm" title="Ubah">
 						<i class="fa fa-edit"></i> 
 					</a>
 					
-					<a href="<?php echo site_url('procedure_detail/delete/'.$procedure_detail->procedure_detail_id) ?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin menghapus data ini?')">
+					<a href="<?php echo site_url('procedure_detail/delete/'.$procedure_detail->procedure_detail_id) ?>" style="width:40px" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin menghapus data ini?')" title="Hapus">
 						<i class="fa fa-trash"></i> 
 					</a>
 				</div>

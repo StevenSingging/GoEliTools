@@ -89,10 +89,10 @@
   <div class="col-sm-9">
     <div class="input-group-append mb-2">
         <input style="width:100%" type="text" name="goal_desc" placeholder="Deskripsi Goal/Fitur" required  >
-        <button style="width:100px" class="add_form_field btn btn-success btn-sm ml-1">Tambah +</button>
     </div>
     <div class="container1">
     </div>
+    <button style="width:100px;float:right" type="button" class="add_form_field btn btn-success btn-sm mt-3" data-toggle="tooltip" data-placement="bottom" title="Tambah Form Deskripsi">Tambah +</button>
   </div>
 </div>
 
@@ -122,7 +122,7 @@
           e.preventDefault();
           if (x < max_fields) {
               x++;
-              $(wrapper).append('<div class="input-group-append mb-2"><input style="width:100%" type="text" name="subgoal[]" placeholder="Deskripsi Goal/Fitur" required><button style="width:100px" class="delete btn btn-danger btn-sm ml-1">Hapus</button></div>'); //add input box
+              $(wrapper).append('<div class="input-group-append mb-2"><input style="width:100%" type="text" name="subgoal[]" placeholder="Deskripsi Goal/Fitur" required><button style="width:100px" class="delete btn btn-danger btn-sm ml-1" data-toggle="tooltip" data-placement="bottom" title="Hapus Form">Hapus</button></div>'); //add input box
           } else {
               alert('You Reached the limits')
           }

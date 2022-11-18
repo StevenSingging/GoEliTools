@@ -19,11 +19,11 @@ echo form_close();
 <table class="table table-bordered table striped table-sm" id="example1">
 	<thead>
 		<tr>
-			<th width = "5%">NO</th>
-			<th width = "20%">NAMA</th>
-			<th width = "20%">EMAIL</th>
-			<th width = "20%">USERNAME</th>
-			<th width = "10%">LEVEL</th>
+			<th width = "1%">NO</th>
+			<th width = "30%">NAMA</th>
+			<th width = "30%">EMAIL</th>
+			<th width = "15%">USERNAME</th>
+			<th width = "7%">LEVEL</th>
 			<th>ACTION</th>
 		</tr>
 	</thead>
@@ -36,7 +36,7 @@ echo form_close();
 			<td><?php echo $user->email ?></td>
 			<td><?php echo $user->username ?></td>
 			<td><?php echo $user->akses_level ?></td>
-			<td>
+			<td class="text-center ">
 				<div class="btn_group">
 					<a href="<?php echo site_url('user/edit/'.$user->id_user) ?>" class="btn btn-warning btn-sm">
 						<i class="fa fa-edit"></i> Edit

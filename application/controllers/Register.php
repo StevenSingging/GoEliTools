@@ -29,7 +29,7 @@ class Register extends CI_Controller {
         // Proses oleh model
         $this->user_model->tambah($data);
         //notifikasi dan redirect
-        $this->session->set_flashdata('sukses', 'Data telah ditambah');
+        $this->session->set_flashdata('add', 'Data telah ditambah');
         redirect(site_url('login'), 'refresh');
             
         }else{

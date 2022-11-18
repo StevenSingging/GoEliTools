@@ -21,12 +21,22 @@ class Goal_fitur extends CI_Controller{
 		$goal1 = $this->goal_model->detail2($user_id);	
 		$total = $this->goal_model->total();
 		$goal = $this->goal_model->listing();
-		$listParent = $this->goal_model->listParent();
 
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
+		}else if(isset($_SESSION['add'])){
+			unset($_SESSION['add']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
+		
 		$data = array( 'title' => 'Data Goal  ('.$total->total.')',
 						'goal' => $goal,
 						'goal1' => $goal1,
-						'plist' => $listParent,
 						'content' => 'goal/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);

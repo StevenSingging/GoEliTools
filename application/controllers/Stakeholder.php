@@ -16,6 +16,17 @@ class Stakeholder extends CI_Controller {
 		$stakeholder = $this->stakeholder_model->listing();
 		$total = $this->stakeholder_model->total();
 		$project = $this->project_model->listing();
+
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
+
 		// validasi input
 		$valid = $this->form_validation;
 		// check stakeholder_name
@@ -45,7 +56,7 @@ class Stakeholder extends CI_Controller {
 			// Proses oleh model
 			$this->stakeholder_model->tambah($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah ditambah');
+			$this->session->set_flashdata('add', 'Data telah ditambah');
 			redirect(site_url('stakeholder'),'refresh');
 		}
 		// end masuk database
@@ -87,7 +98,7 @@ class Stakeholder extends CI_Controller {
 			// Proses oleh model
 			$this->stakeholder_model->edit($data);
 			//notifikasi dan redirect
-			$this->session->set_flashdata('sukses', 'Data telah diedit');
+			$this->session->set_flashdata('berhasil', 'Data telah diedit');
 			redirect(site_url('stakeholder'),'refresh');
 		}
 		// end masuk database
@@ -130,7 +141,7 @@ class Stakeholder extends CI_Controller {
 		//proses hapus
 		$this->stakeholder_model ->delete($data);
 		//notifikasi dan redirect
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		$this->session->set_flashdata('hapus', 'Data telah dihapus');
 		redirect(site_url('stakeholder'),'refresh');
 	}
 
