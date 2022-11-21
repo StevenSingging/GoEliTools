@@ -25,7 +25,7 @@
 		</tr>
 		<tr>
 			<th width="55%">Actor</th>
-			<th> : <?php echo $activities_resources->Actor ?></th>
+			<th> : <?php echo $activities_resources->actor ?></th>
 		</tr>
 		<tr>
 			<th width="25%">Resources</th>
