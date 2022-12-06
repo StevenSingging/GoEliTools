@@ -38,7 +38,7 @@
 			</td>
 
 			<td><?php echo $project_stakeholder->stakeholder_role ?></td>
-			<td>
+			<td class="text-center">
 				<div class="btn_group">
 					<a href="<?php echo site_url('project_stakeholder/detail/'.$project_stakeholder->id) ?>" class="btn btn-info btn-sm">
 						<i class="fa fa-laptop"></i> Detail

@@ -18,6 +18,7 @@ class Project_stakeholder extends CI_Controller {
 	{
 		$project_stakeholder = $this->project_stakeholder_model->listing();
 		$total = $this->project_stakeholder_model->total();
+		$arem = $this->project_stakeholder_model->arem();
 
 		if(isset($_SESSION['berhasil'])){
 			unset($_SESSION['berhasil']);
@@ -29,6 +30,19 @@ class Project_stakeholder extends CI_Controller {
 			unset($_SESSION['gagal']);
 		}else if(isset($_SESSION['warning'])){
 			unset($_SESSION['warning']);
+		}
+
+		foreach($arem as $ar){
+			$aremdata = json_decode(json_encode($ar), true);
+			$data = array( 	'id'				=> $aremdata['id'],
+							'id_user'			=> $aremdata['id_user'],
+							'project_id'		=> $aremdata['project_id'],
+							'Stakeholder_id'	=> $aremdata['stakeholder_id'],
+							'Stakeholder_role'	=> $aremdata['stakeholder_role'],
+							'post_date'			=> $aremdata['post_date']
+						);
+			// // Proses oleh model
+			$this->project_stakeholder_model->tambahArem($data);
 		}
 
 		$data = array( 'title' => 'Data Proyek Stakeholder('.$total->total.')',

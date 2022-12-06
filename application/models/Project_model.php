@@ -70,6 +70,10 @@ class Project_model extends CI_Model {
 	{
 		$this->db->insert('project', $data);
 	}
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.project', $data);
+	}
 	
 	public function detail2($id)
 	{
@@ -81,6 +85,12 @@ class Project_model extends CI_Model {
 
 		$this->db->order_by('project_id', 'desc');
 		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.project T1 WHERE NOT EXISTS (SELECT * FROM arem.project T2 WHERE T1.project_id = T2.project_id)');
 		return $query->result();
 	}
 

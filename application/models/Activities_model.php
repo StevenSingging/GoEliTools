@@ -7,6 +7,7 @@ class Activities_model extends CI_Model {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->dbar = $this->load->database('arem', TRUE);
 	}
 
 	// ambil data activities
@@ -65,6 +66,11 @@ class Activities_model extends CI_Model {
 		$this->db->from('procedure');
 		$this->db->order_by('activities_id');
 		$query = $this->db->get();
+		return $query->result();
+	}
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.activities T1 WHERE NOT EXISTS (SELECT * FROM arem.activities T2 WHERE T1.activities_id = T2.activities_id AND T1.project_id = T2.project_id)');
 		return $query->result();
 	}
 
@@ -213,6 +219,10 @@ class Activities_model extends CI_Model {
 	public function tambah($data)
 	{
 		$this->db->insert('activities', $data);
+	}
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.activities', $data);
 	}
 
 

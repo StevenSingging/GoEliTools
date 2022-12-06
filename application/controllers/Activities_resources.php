@@ -22,9 +22,36 @@ class Activities_resources extends CI_Controller {
 	{
 		$activities_resources = $this->activities_resources_model->listing();
 		$total = $this->activities_resources_model->total();
+		$arem = $this->activities_resources_model->arem();
 		
+		if(isset($_SESSION['berhasil'])){
+			unset($_SESSION['berhasil']);
+		}else if(isset($_SESSION['add'])){
+			unset($_SESSION['add']);
+		}else if(isset($_SESSION['hapus'])){
+			unset($_SESSION['hapus']);
+		}else if(isset($_SESSION['gagal'])){
+			unset($_SESSION['gagal']);
+		}else if(isset($_SESSION['warning'])){
+			unset($_SESSION['warning']);
+		}
+
+		foreach($arem as $ar){
+			$aremdata = json_decode(json_encode($ar), true);
+			$data = array( 	'id'			=> $aremdata['id'],
+							'id_user'		=> $aremdata['id_user'],
+							'activities_id'	=> $aremdata['activities_id'],
+							'actor'			=> $aremdata['actor'],
+							'resources'		=> $aremdata['resources'],
+							'post_date'		=> $aremdata['post_date']
+						);
+			// // Proses oleh model
+			$this->activities_resources_model->tambahArem($data);
+		}
+
 		$data = array( 'title' => 'Data Sumber Daya Aktifitas ('.$total->total.')',
 						'activities_resources' => $activities_resources,
+						'arem'	=> $arem,
 						'content' => 'activities_resources/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);

@@ -23,6 +23,7 @@ class Goal extends CI_Controller {
 		$goal1 = $this->goal_model->detail2($user_id);	
 		$total = $this->goal_model->total();
 		$goal = $this->goal_model->listing();
+		$arem = $this->goal_model->arem();
 
 		if(isset($_SESSION['berhasil'])){
 			unset($_SESSION['berhasil']);
@@ -35,10 +36,25 @@ class Goal extends CI_Controller {
 		}else if(isset($_SESSION['warning'])){
 			unset($_SESSION['warning']);
 		}
+		foreach($arem as $ar){
+			$aremdata = json_decode(json_encode($ar), true);
+			$data = array( 	'id_user'		=> $aremdata['id_user'],
+							'goal_id'		=> $aremdata['goal_id'],
+							'project_id'	=> $aremdata['project_id'],
+							'stakeholder_id'=> $aremdata['stakeholder_id'],
+							'parent_goal_id'=> $aremdata['parent_goal_id'],
+							'goal_desc'		=> $aremdata['goal_desc'],
+							'goal_type'		=> $aremdata['goal_type'],
+							'post_date'		=> $aremdata['post_date']
+						);
+			// // Proses oleh model
+			$this->goal_model->tambahArem($data);
+		}
 		
 		$data = array( 'title' => 'Data Goal  ('.$total->total.')',
 						'goal' => $goal,
 						'goal1' => $goal1,
+						'arem'	=> $arem,
 						'content' => 'goal/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);
@@ -284,7 +300,7 @@ class Goal extends CI_Controller {
 								'post_date'		=> date('Y-m-d H:i:s')
 							);
 			$this->goal_model->tambah($data);
-			if($inp->post('goal_id')!="pilihan"){
+			if($inp->post('goal_id')!=null){
 				$subid = $inp->post('goal_id');
 			}else{
 				$subid = $this->goal_model->getId();
@@ -370,22 +386,26 @@ class Goal extends CI_Controller {
 		$data = array('goal_id' => $goal_id);
 		$listParent = $this->goal_model->listParent();
 		$listActgoal = $this->goal_model->listActgoal();
-		
+		$arrayPar = array();
+		$arrayAct = array();
 		foreach($listParent as $lp => $value ){
-			foreach($listActgoal as $la => $hasil){
-				$hsl = json_decode(json_encode($hasil), true);
-				$val = json_decode(json_encode($value), true);
-				if($data['goal_id']==$val['parent_goal_id'] OR $data['goal_id']==$hsl['goal_id'] ){
-					$this->session->set_flashdata('alert', 'Data Masih Digunakan');
-					return redirect(site_url('goal'), 'refresh');
-				}else{
-					//proses hapus
-					$this->goal_model ->delete($data);
-					//notifikasi dan redirect
-					$this->session->set_flashdata('hapus', 'Data telah dihapus');
-					redirect(site_url('goal'),'refresh');
-				}
-			}
+			$val = json_decode(json_encode($value), true);
+			array_push($arrayPar, $val['parent_goal_id']);
+		}
+		foreach($listActgoal as $la => $hasil){
+			$hsl = json_decode(json_encode($hasil), true);
+			array_push($arrayAct, $hsl['goal_id']);
+		}
+		if(in_array($data['goal_id'], $arrayPar) OR in_array($data['goal_id'], $arrayAct)){
+			$this->session->set_flashdata('alert', 'Data Masih Digunakan');
+			return redirect(site_url('goal'), 'refresh');
+		}else{
+			//proses hapus
+			$this->goal_model ->delete($data);
+			//notifikasi dan redirect
+			$this->session->set_flashdata('hapus', 'Data telah dihapus');
+			redirect(site_url('goal'),'refresh');
+					
 		}
 		//$this->load->view('goal/coba');
 	}

@@ -26,7 +26,7 @@ class Goal_model extends CI_Model {
 		$this->db->join('project', 'project.project_id = goal.project_id', 'left');
 		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = goal.stakeholder_id', 'left');
 		//end join
-		$this->db->order_by('goal_id', 'desc');
+		$this->db->order_by('goal_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -35,7 +35,7 @@ class Goal_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('goal');
-		$this->db->order_by('goal_id', 'desc');
+		$this->db->order_by('goal_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -54,6 +54,15 @@ class Goal_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.goal T1 WHERE NOT EXISTS (SELECT * FROM arem.goal T2 WHERE T1.goal_id = T2.goal_id AND T1.project_id = T2.project_id)');
+		return $query->result();
+	}
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.goal', $data);
+	}
 	
 	// daftar_goal_project
 	public function project($project_id)
@@ -77,7 +86,7 @@ class Goal_model extends CI_Model {
 		//where
 		$this->db->where('project.project_id', $project_id);
 		// End Where
-		$this->db->order_by('goal_id', 'desc');
+		$this->db->order_by('goal_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -104,7 +113,7 @@ class Goal_model extends CI_Model {
 		//where
 		$this->db->where('stakeholder.stakeholder_id', $stakeholder_id);
 		// End Where
-		$this->db->order_by('goal_id', 'desc');
+		$this->db->order_by('goal_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -129,7 +138,7 @@ class Goal_model extends CI_Model {
 		$this->db->join('goal as goal2', 'goal2.goal_id = goal.parent_goal_id', 'left');
 		//end join
 		$this->db->where('goal.goal_id', $goal_id);
-		$this->db->order_by('goal.goal_id', 'desc');
+		$this->db->order_by('goal.goal_id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -190,7 +199,7 @@ class Goal_model extends CI_Model {
 	{
 		$this->db->select('count(*) as total');
 		$this->db->from('goal');
-		$this->db->order_by('goal_id', 'desc');
+		$this->db->order_by('goal_id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -243,7 +252,7 @@ class Goal_model extends CI_Model {
 		$this->db->join('project', 'project.project_id = goal.project_id', 'left');
 		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = goal.stakeholder_id', 'left');
 
-		$this->db->order_by('goal_id', 'desc');
+		$this->db->order_by('goal_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}

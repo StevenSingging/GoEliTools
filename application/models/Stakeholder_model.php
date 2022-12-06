@@ -49,6 +49,13 @@ class Stakeholder_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->row();
 	}
+
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.stakeholder T1 WHERE NOT EXISTS (SELECT * FROM arem.stakeholder T2 WHERE T1.stakeholder_id = T2.stakeholder_id)');
+		return $query->result();
+	}
+
 	// hitung total stakeholder
 	public function total()
 	{
@@ -75,6 +82,10 @@ class Stakeholder_model extends CI_Model {
 	public function tambah($data)
 	{
 		$this->db->insert('stakeholder', $data);
+	}
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.stakeholder', $data);
 	}
 
 

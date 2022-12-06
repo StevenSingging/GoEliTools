@@ -101,6 +101,15 @@ class Activities_resources_model extends CI_Model {
 	{
 		$this->db->insert('activities_resources', $data);
 	}
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.activities_resources T1 WHERE NOT EXISTS (SELECT * FROM arem.activities_resources T2 WHERE T1.id = T2.id)');
+		return $query->result();
+	}
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.activities_resources', $data);
+	}
 
 
 }

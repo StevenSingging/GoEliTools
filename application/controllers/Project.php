@@ -17,6 +17,7 @@ class Project extends CI_Controller {
 		$total = $this->project_model->total();
 		$user_id = $this->session->userdata('id_user');
 		$project1 = $this->project_model->detail2($user_id);
+		$arem = $this->project_model->arem();
 
 		if(isset($_SESSION['berhasil'])){
 			unset($_SESSION['berhasil']);
@@ -39,10 +40,21 @@ class Project extends CI_Controller {
 		//jika sudah dicek, dan error
 		if($valid->run()===FALSE) {
 		//end validasi
-
+		foreach($arem as $ar){
+			$aremdata = json_decode(json_encode($ar), true);
+			$data = array( 	'id_user'		=> $aremdata['id_user'],
+								'project_id'	=> $aremdata['project_id'],
+								'project_name'	=> $aremdata['project_name'],
+								'project_desc'	=> $aremdata['project_desc'],
+								'post_date'		=> $aremdata['post_date']
+							);
+			// // Proses oleh model
+			$this->project_model->tambahArem($data);
+		}
 		$data = array( 'title' => 'Data Proyek ('.$total->total.')',
 						'project' => $project,
 						'project1' => $project1,
+						'arem' => $arem,
 						'content' => 'project/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);
@@ -53,21 +65,16 @@ class Project extends CI_Controller {
 			$pname = $inp->post('project_name[]');
 			$pdesc = $inp->post('project_desc[]');
 			$pdate = date('Y-m-d H:i:s');
-
+			
 			foreach ($pname as $key => $value){
 				$data = array( 	'id_user'		=> $this->session->userdata('id_user'),
 									'project_name'	=> $pname[$key],
 									'project_desc'	=> $pdesc[$key],
 									'post_date'		=> date('Y-m-d H:i:s')
 								);
-				
-				//print_r($data);
-					
 					// // Proses oleh model
 					$this->project_model->tambah($data);
-					
-	
-				}
+			}
 			// //notifikasi dan redirect
 			$this->session->set_flashdata('add', 'Data telah ditambah');
 			redirect(site_url('project'),'refresh');
@@ -75,8 +82,6 @@ class Project extends CI_Controller {
 		//end masuk database
 		
 	}
-
-
 
 	// Edit Project
 	public function edit($project_id)

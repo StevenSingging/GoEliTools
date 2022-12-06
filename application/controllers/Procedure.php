@@ -23,6 +23,7 @@ class Procedure extends CI_Controller {
 	{
 		$procedure = $this->procedure_model->listing();
 		$total = $this->procedure_model->total();
+		$arem = $this->procedure_model->arem();
 
 		if(isset($_SESSION['berhasil'])){
 			unset($_SESSION['berhasil']);
@@ -36,8 +37,25 @@ class Procedure extends CI_Controller {
 			unset($_SESSION['warning']);
 		}
 
+		foreach($arem as $ar){
+			$aremdata = json_decode(json_encode($ar), true);
+			$data = array( 	'id_user'			=> $aremdata['id_user'],
+							'procedure_id'		=> $aremdata['procedure_id'],
+							'project_id'		=> $aremdata['project_id'],
+							'stakeholder_id'	=> $aremdata['stakeholder_id'],
+							'procedure_desc'	=> $aremdata['procedure_desc'],
+							'activities_id'		=> $aremdata['activities_id'],
+							'actor'				=> $aremdata['actor'],
+							'resources'			=> $aremdata['resources'],
+							'post_date'			=> $aremdata['post_date']
+				);
+			// // Proses oleh model
+			$this->procedure_model->tambahArem($data);
+		}
+
 		$data = array( 'title' => 'Data Prosedur  ('.$total->total.')',
 						'procedure' => $procedure,
+						'arem'		=> $arem,
 						'content' => 'procedure/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);

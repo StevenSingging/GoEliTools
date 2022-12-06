@@ -21,8 +21,8 @@ if($this->session->flashdata('alert')){
 			<th width = "1%">NO</th>
 			<th width = "13%">PROJECT</th>
 			<th width = "10%">STAKEHOLDER</th>
-			<th width = "6%">ID</th>
-			<th width = "25%">ACTIVITIES DESCRIPTION</th>
+			<th width = "7%">ID</th>
+			<th width = "22%">ACTIVITIES DESCRIPTION</th>
 			<th width = "14%">PARENT ACTIVITIES</th>
 			<th width = "11%">PARENT GOAL</th>
 			<th>ACTION</th>

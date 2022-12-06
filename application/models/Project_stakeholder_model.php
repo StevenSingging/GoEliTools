@@ -50,7 +50,7 @@ class Project_stakeholder_model extends CI_Model {
 		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = project_stakeholder.stakeholder_id', 'left');
 		//end join
 
-		$this->db->order_by('project_stakeholder.project_id', 'desc');
+		$this->db->order_by('project_stakeholder.project_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -78,7 +78,7 @@ class Project_stakeholder_model extends CI_Model {
 		$this->db->where('project_stakeholder.project_id', $project_id);
 		// End Where
 
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -100,7 +100,7 @@ class Project_stakeholder_model extends CI_Model {
 		$this->db->where('pasien.id_pasien', $id_pasien);
 		// End Where
 
-		$this->db->order_by('id_suhu_tubuh', 'desc');
+		$this->db->order_by('id_suhu_tubuh', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -126,7 +126,7 @@ class Project_stakeholder_model extends CI_Model {
 		//end join
 		// where
 		$this->db->where('id', $id);
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -139,7 +139,7 @@ class Project_stakeholder_model extends CI_Model {
 		// where
 		$this->db->where(array( 'project_stakeholder_name' => $project_stakeholder_name, 
 						  		'password' => SHA1($password)));
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -148,7 +148,7 @@ class Project_stakeholder_model extends CI_Model {
 	{
 		$this->db->select('count(*) as total');
 		$this->db->from('project_stakeholder');
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -170,6 +170,15 @@ class Project_stakeholder_model extends CI_Model {
 	public function tambah($data)
 	{
 		$this->db->insert('project_stakeholder', $data);
+	}
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.project_stakeholder T1 WHERE NOT EXISTS (SELECT * FROM arem.project_stakeholder T2 WHERE T1.id = T2.id)');
+		return $query->result();
+	}
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.project_stakeholder', $data);
 	}
 
 

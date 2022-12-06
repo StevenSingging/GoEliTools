@@ -60,7 +60,7 @@
     <label for="p_goal_id" class="col-sm-3 text-right">Pilih Goal Induk</label>
     <div class="col-sm-9">
     <select name="goal_id" class="form-control select2" >
-      <option value="pilihan">Pilih Goal Induk...</option>
+      <option >Pilih Goal Induk...</option>
       <!-- Ambil data goal dari Controller -->
       <?php  foreach ($goal as $goal) {  ?>
         <option value="<?php echo $goal->goal_id ?>">

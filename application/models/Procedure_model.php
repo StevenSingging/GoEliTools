@@ -29,7 +29,7 @@ class Procedure_model extends CI_Model {
 		$this->db->join('stakeholder', 'stakeholder.stakeholder_id = procedure.stakeholder_id', 'left');
 		$this->db->join('activities', 'activities.activities_id = procedure.activities_id', 'left');
 		//end join
-		$this->db->order_by('procedure_id', 'desc');
+		$this->db->order_by('procedure_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -38,7 +38,7 @@ class Procedure_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('procedure');
-		$this->db->order_by('procedure_id', 'desc');
+		$this->db->order_by('procedure_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -74,7 +74,7 @@ class Procedure_model extends CI_Model {
 		//where
 		$this->db->where('procedure.activities_id', $activities_id);
 		// End Where
-		$this->db->order_by('procedure_id', 'desc');
+		$this->db->order_by('procedure_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -101,7 +101,7 @@ class Procedure_model extends CI_Model {
 		$this->db->join('activities', 'activities.activities_id = procedure.activities_id', 'left');
 		//end join
 		$this->db->where('procedure.procedure_id', $procedure_id);
-		$this->db->order_by('procedure.procedure_id', 'desc');
+		$this->db->order_by('procedure.procedure_id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -112,7 +112,7 @@ class Procedure_model extends CI_Model {
 	{
 		$this->db->select('count(*) as total');
 		$this->db->from('procedure');
-		$this->db->order_by('procedure_id', 'desc');
+		$this->db->order_by('procedure_id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -135,6 +135,15 @@ class Procedure_model extends CI_Model {
 		$this->db->insert('procedure', $data);
 	}
 
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.procedure T1 WHERE NOT EXISTS (SELECT * FROM arem.procedure T2 WHERE T1.procedure_id = T2.procedure_id AND T1.project_id = T2.project_id)');
+		return $query->result();
+	}
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.procedure', $data);
+	}
 
 }
 

@@ -22,6 +22,7 @@ class Activities extends CI_Controller {
 	{
 		$activities = $this->activities_model->listing();
 		$total = $this->activities_model->total();
+		$arem = $this->activities_model->arem();
 
 		if(isset($_SESSION['berhasil'])){
 			unset($_SESSION['berhasil']);
@@ -34,9 +35,25 @@ class Activities extends CI_Controller {
 		}else if(isset($_SESSION['warning'])){
 			unset($_SESSION['warning']);
 		}
+
+		foreach($arem as $ar){
+			$aremdata = json_decode(json_encode($ar), true);
+			$data = array( 	'activities_id'	=> $aremdata['activities_id'],
+						'id_user'	=> $aremdata['id_user'],
+						'project_id'	=> $aremdata['project_id'],
+						'stakeholder_id'=> $aremdata['stakeholder_id'],
+						'activities_desc'		=> $aremdata['activities_desc'],
+						'goal_id'=> $aremdata['goal_id'],
+						'parent_activities_id'=> $aremdata['parent_activities_id'],
+						'post_date'		=> $aremdata['post_date']
+					);
+			// // Proses oleh model
+			$this->activities_model->tambahArem($data);
+		}
 		
 		$data = array( 'title' => 'Data Aktifitas  ('.$total->total.')',
 						'activities' => $activities,
+						'arem' => $arem,
 						'content' => 'activities/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);
@@ -276,7 +293,7 @@ class Activities extends CI_Controller {
 		// 	redirect(site_url('activities'),'refresh');
 		// 		//echo "hapus <br>";
 		// }
-		$this->load->view('activities/coba');
+		//$this->load->view('activities/coba');
 		// foreach($listParent as $lp => $value ){
 		// 	foreach($listActres as $la => $hasil){
 		// 		$hsl = json_decode(json_encode($hasil), true);

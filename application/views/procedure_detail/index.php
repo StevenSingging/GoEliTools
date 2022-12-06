@@ -10,9 +10,8 @@
 			<th width = "5%">NO</th>
 			<th width = "5%">ID</th>
 			<th width = "30%">PROCEDURE ID - DESCRIPTION</th>
-			<th width = "10%">PROCEDURE DETAIL NO</th>
-			<th width = "30%">PROCEDURE DETAIL DESCRIPTION</th>
-			
+			<th width = "16%">PROCEDURE DETAIL NO</th>
+			<th width = "27%">PROCEDURE DETAIL DESCRIPTION</th>
 			<th>ACTION</th>
 		</tr>
 	</thead>

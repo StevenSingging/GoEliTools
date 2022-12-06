@@ -23,7 +23,7 @@ class Procedure_detail_model extends CI_Model {
 		$this->db->join('users', 'users.id_user = procedure_detail.id_user', 'left');
 		$this->db->join('procedure', 'procedure.procedure_id = procedure_detail.procedure_id', 'left');
 		//end join
-		$this->db->order_by('procedure_detail_id', 'desc');
+		$this->db->order_by('procedure_detail_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -32,7 +32,7 @@ class Procedure_detail_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('procedure_detail');
-		$this->db->order_by('procedure_detail_id', 'desc');
+		$this->db->order_by('procedure_detail_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -54,7 +54,7 @@ class Procedure_detail_model extends CI_Model {
 		//where
 		$this->db->where('procedure_detail.procedure_id', $procedure_id);
 		// End Where
-		$this->db->order_by('procedure_detail_id', 'desc');
+		$this->db->order_by('procedure_detail_id', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -75,7 +75,7 @@ class Procedure_detail_model extends CI_Model {
 		$this->db->join('procedure', 'procedure.procedure_id = procedure_detail.procedure_id', 'left');
 		//end join
 		$this->db->where('procedure_detail.procedure_detail_id', $procedure_detail_id);
-		$this->db->order_by('procedure_detail.procedure_detail_id', 'desc');
+		$this->db->order_by('procedure_detail.procedure_detail_id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -86,7 +86,7 @@ class Procedure_detail_model extends CI_Model {
 	{
 		$this->db->select('count(*) as total');
 		$this->db->from('procedure_detail');
-		$this->db->order_by('procedure_detail_id', 'desc');
+		$this->db->order_by('procedure_detail_id', 'asc');
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -113,6 +113,17 @@ class Procedure_detail_model extends CI_Model {
 		$this->db->where('procedure_id =', $proid);
 		$query = $this->db->get('procedure_detail');
 		return $query->num_rows();;
+	}
+
+	public function arem()
+	{
+		$query = $this->db->query('SELECT * FROM data_arem.procedure_detail T1 WHERE NOT EXISTS (SELECT * FROM arem.procedure_detail T2 WHERE T1.id = T2.id)');
+		return $query->result();
+	}
+
+	public function tambahArem($data)
+	{
+		$this->db->insert('arem.procedure_detail', $data);
 	}
 
 

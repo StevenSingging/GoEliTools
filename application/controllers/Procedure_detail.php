@@ -23,6 +23,7 @@ class Procedure_detail extends CI_Controller {
 	{
 		$procedure_detail = $this->procedure_detail_model->listing();
 		$total = $this->procedure_detail_model->total();
+		$arem = $this->procedure_detail_model->arem();
 
 		if(isset($_SESSION['berhasil'])){
 			unset($_SESSION['berhasil']);
@@ -35,9 +36,28 @@ class Procedure_detail extends CI_Controller {
 		}else if(isset($_SESSION['warning'])){
 			unset($_SESSION['warning']);
 		}
+		foreach($arem as $ar){
+			$aremdata = json_decode(json_encode($ar), true);
+			$data = array( 	'id' => $aremdata['id'],
+							'procedure_detail_id' => $aremdata['procedure_detail_id'],
+							'id_user'		=> $aremdata['id_user'],
+							'procedure_id'	=> $aremdata['procedure_id'],
+							'procedure_detail_no'	=> $aremdata['procedure_detail_no'],
+							'procedure_detail_desc'	=> $aremdata['procedure_detail_desc'],
+							'pre_condition'		=> $aremdata['pre_condition'],
+							'post_condition'	=> $aremdata['post_condition'],
+							'formula'=> $aremdata['formula'],
+							'actor'=> $aremdata['actor'],
+							'resources'=> $aremdata['resources'],
+							'post_date'		=> $aremdata['post_date']
+						);
+			// // Proses oleh model
+			$this->procedure_detail_model->tambahArem($data);
+		}
 
 		$data = array( 'title' => 'Data Detail Prosedur  ('.$total->total.')',
 						'procedure_detail' => $procedure_detail,
+						'arem'	=> $arem,
 						'content' => 'procedure_detail/index'
 					 );
 		$this->load->view('layout/wrapper', $data, FALSE);
